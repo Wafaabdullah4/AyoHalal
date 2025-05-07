@@ -232,14 +232,14 @@
                     <h3 class="font-bold text-blue-800 dark:text-blue-300 mb-2 flex items-center">
                         <i class="fas fa-info-circle mr-2"></i> Panduan Pengisian
                     </h3>
-                    <p class="text-blue-700 dark:text-blue-300 text-sm">Pilih jawaban yang paling sesuai dengan kondisi
+                    <p class="text-blue-700 dark:text-blue-300 text-sm mb-5">Pilih jawaban yang paling sesuai dengan kondisi
                         usaha Anda saat ini menggunakan skala berikut:</p>
                     <div class="flex flex-col sm:flex-row gap-2 text-xs">
-                        <div class="bg-blue-100 dark:bg-blue-800/50 p-2 rounded text-center">1: Belum sama sekali</div>
-                        <div class="bg-blue-100 dark:bg-blue-800/50 p-2 rounded text-center">2: Baru mulai</div>
-                        <div class="bg-blue-100 dark:bg-blue-800/50 p-2 rounded text-center">3: Sudah sebagian</div>
-                        <div class="bg-blue-100 dark:bg-blue-800/50 p-2 rounded text-center">4: Cukup konsisten</div>
-                        <div class="bg-blue-100 dark:bg-blue-800/50 p-2 rounded text-center">5: Lengkap & terdokumentasi
+                        <div class="bg-blue-100 dark:bg-blue-800/50 p-2 rounded">1: Belum sama sekali</div>
+                        <div class="bg-blue-100 dark:bg-blue-800/50 p-2 rounded">2: Baru mulai</div>
+                        <div class="bg-blue-100 dark:bg-blue-800/50 p-2 rounded">3: Sudah sebagian</div>
+                        <div class="bg-blue-100 dark:bg-blue-800/50 p-2 rounded">4: Cukup konsisten</div>
+                        <div class="bg-blue-100 dark:bg-blue-800/50 p-2 rounded">5: Lengkap & terdokumentasi
                         </div>
                     </div>
 
@@ -331,7 +331,7 @@
                 </div>
 
                 <!-- Section B: Bahan Baku & Supplier -->
-                <div class="bg-white dark:bg-dark-800 rounded-xl p-6 question-container" data-section="B">
+                <div class="bg-white dark:bg-dark-800 rounded-xl p-6 question-container active" data-section="B">
                     <h2 class="text-xl font-bold mb-4 text-primary-600 dark:text-primary-400">B. Bahan Baku & Supplier
                     </h2>
 
@@ -403,7 +403,7 @@
                 </div>
 
                 <!-- Section C: Proses Produksi -->
-                <div class="bg-white dark:bg-dark-800 rounded-xl p-6 question-container" data-section="C">
+                <div class="bg-white dark:bg-dark-800 rounded-xl p-6 question-container active" data-section="C">
                     <h2 class="text-xl font-bold mb-4 text-primary-600 dark:text-primary-400">C. Proses Produksi</h2>
 
                     <!-- Question 5 -->
@@ -474,7 +474,7 @@
                 </div>
 
                 <!-- Section D: SDM & Pemahaman Halal -->
-                <div class="bg-white dark:bg-dark-800 rounded-xl p-6 question-container" data-section="D">
+                <div class="bg-white dark:bg-dark-800 rounded-xl p-6 question-container active" data-section="D">
                     <h2 class="text-xl font-bold mb-4 text-primary-600 dark:text-primary-400">D. SDM & Pemahaman Halal
                     </h2>
 
@@ -546,7 +546,7 @@
                 </div>
 
                 <!-- Section E: Dokumentasi -->
-                <div class="bg-white dark:bg-dark-800 rounded-xl p-6 question-container" data-section="E">
+                <div class="bg-white dark:bg-dark-800 rounded-xl p-6 question-container active" data-section="E">
                     <h2 class="text-xl font-bold mb-4 text-primary-600 dark:text-primary-400">E. Dokumentasi</h2>
 
                     <!-- Question 9 -->
@@ -857,13 +857,13 @@
                 }
             }
 
-            questionContainers.forEach(container => {
-                if (container.dataset.section === currentSection || currentSection === '') {
-                    container.classList.add('active');
-                } else {
-                    container.classList.remove('active');
-                }
-            });
+            // questionContainers.forEach(container => {
+            //     if (container.dataset.section === currentSection || currentSection === '') {
+            //         container.classList.add('active');
+            //     } else {
+            //         container.classList.remove('active');
+            //     }
+            // });
         }
 
         // Form Submission
