@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cek Kesiapan Sertifikasi Halal - AyoHalal</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
         tailwind.config = {
@@ -48,14 +50,14 @@
             align-items: center;
             position: relative;
         }
-        
+
         .radio-input {
             position: absolute;
             opacity: 0;
             width: 0;
             height: 0;
         }
-        
+
         .radio-design {
             width: 24px;
             height: 24px;
@@ -68,14 +70,14 @@
             margin-bottom: 4px;
             transition: all 0.3s ease;
         }
-        
-        .radio-input:checked ~ .radio-design {
-            border-color: #296253 ;
-            background: #296253 ;
+
+        .radio-input:checked~.radio-design {
+            border-color: #296253;
+            background: #296253;
             box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.2);
         }
-        
-        .radio-input:checked ~ .radio-design::after {
+
+        .radio-input:checked~.radio-design::after {
             content: '';
             display: block;
             width: 12px;
@@ -83,137 +85,151 @@
             border-radius: 50%;
             background: white;
         }
-        
+
         .radio-label {
             font-size: 0.75rem;
             color: #6b7280;
             transition: all 0.3s ease;
         }
-        
-        .radio-input:checked ~ .radio-label {
-            color: #296253 ;
+
+        .radio-input:checked~.radio-label {
+            color: #296253;
             font-weight: 500;
         }
-        
+
         /* Dark mode styles */
         .dark .radio-design {
             border-color: #4b5563;
             background: #1f2937;
         }
-        
-        .dark .radio-input:checked ~ .radio-design {
-            border-color: #296253 ;
-            background: #296253 ;
+
+        .dark .radio-input:checked~.radio-design {
+            border-color: #296253;
+            background: #296253;
             box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.3);
         }
-        
+
         .dark .radio-label {
             color: #9ca3af;
         }
-        
-        .dark .radio-input:checked ~ .radio-label {
-            color: #296253 ;
+
+        .dark .radio-input:checked~.radio-label {
+            color: #296253;
         }
-        
+
         /* Question container animation */
         .question-container {
             transition: all 0.3s ease;
             transform-origin: top;
         }
-        
+
         .question-container:not(.active) {
             opacity: 0.7;
             transform: scale(0.98);
         }
-        
+
         .question-container.active {
             opacity: 1;
             transform: scale(1);
         }
-        
+
         /* Progress bar animation */
         .progress-bar {
             transition: width 1s ease-in-out;
         }
-        
+
         /* Loading spinner */
         .loading-spinner {
             animation: spin 1s linear infinite;
         }
-        
+
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
-        
+
         /* Result card animation */
         .result-card {
             animation: fadeInUp 0.8s ease-out;
         }
-        
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-        
+
         /* Score circle animation */
         @keyframes circle-fill {
             from {
                 stroke-dashoffset: 283;
             }
+
             to {
                 stroke-dashoffset: var(--offset);
             }
         }
     </style>
 </head>
+
 <body class="bg-gray-50 text-gray-800 dark:bg-dark-900 dark:text-gray-200 font-sans transition-colors duration-300">
     <!-- Navigation -->
     <nav class="bg-white dark:bg-dark-800 shadow-lg fixed w-full z-10">
         <div class="container mx-auto px-4 py-3">
             <div class="flex justify-between items-center">
                 <div class="flex items-center space-x-2">
-                <img src="AyoHalal Light.svg" alt="AyoHalal" class="h-6 w-auto block dark:hidden" />
-                <img src="AyoHalal Dark.svg" alt="AyoHalal Dark" class="h-6 w-auto hidden dark:block" />
+                    <img src="AyoHalal Light.svg" alt="AyoHalal" class="h-6 w-auto block dark:hidden" />
+                    <img src="AyoHalal Dark.svg" alt="AyoHalal Dark" class="h-6 w-auto hidden dark:block" />
 
                 </div>
                 <div class="flex items-center space-x-4">
                     <button id="theme-toggle" class="p-2 rounded-full focus:outline-none">
                         <i class="fas fa-moon text-gray-700 dark:text-yellow-300" id="theme-icon"></i>
                     </button>
-                    <a href="index.html" class="hidden md:inline-block bg-primary-600 hover:bg-primary-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+                    <a href="index.html"
+                        class="hidden md:inline-block bg-primary-600 hover:bg-primary-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
                         Kembali ke Beranda
                     </a>
                 </div>
             </div>
         </div>
     </nav>
-    
+
 
     <!-- Main Content -->
     <main class="pt-24 pb-12 px-4">
         <div class="container mx-auto max-w-4xl">
             <!-- Header Section -->
             <section class="text-center mb-12">
-                <h1 class="text-3xl md:text-4xl font-bold mb-4">Cek Kesiapan Produk Anda untuk <span class="text-primary-500">Sertifikasi Halal</span></h1>
-                <p class="text-lg text-gray-600 dark:text-gray-400 mb-6">Kami bantu mengevaluasi apakah produk UMKM Anda sudah siap untuk proses sertifikasi halal.</p>
-                <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 text-left max-w-2xl mx-auto">
+                <h1 class="text-3xl md:text-4xl font-bold mb-4">Cek Kesiapan Produk Anda untuk <span
+                        class="text-primary-500">Sertifikasi Halal</span></h1>
+                <p class="text-lg text-gray-600 dark:text-gray-400 mb-6">Kami bantu mengevaluasi apakah produk UMKM Anda
+                    sudah siap untuk proses sertifikasi halal.</p>
+                <div
+                    class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 text-left max-w-2xl mx-auto">
                     <h3 class="font-bold text-blue-800 dark:text-blue-300 mb-2 flex items-center">
                         <i class="fas fa-info-circle mr-2"></i> Panduan Pengisian
                     </h3>
-                    <p class="text-blue-700 dark:text-blue-300 text-sm">Pilih jawaban yang paling sesuai dengan kondisi usaha Anda saat ini menggunakan skala berikut:</p>
+                    <p class="text-blue-700 dark:text-blue-300 text-sm">Pilih jawaban yang paling sesuai dengan kondisi
+                        usaha Anda saat ini menggunakan skala berikut:</p>
                     <div class="mt-2 grid grid-cols-5 gap-2 text-xs">
                         <div class="bg-blue-100 dark:bg-blue-800/50 p-2 rounded text-center">1: Belum sama sekali</div>
                         <div class="bg-blue-100 dark:bg-blue-800/50 p-2 rounded text-center">2: Baru mulai</div>
                         <div class="bg-blue-100 dark:bg-blue-800/50 p-2 rounded text-center">3: Sudah sebagian</div>
                         <div class="bg-blue-100 dark:bg-blue-800/50 p-2 rounded text-center">4: Cukup konsisten</div>
-                        <div class="bg-blue-100 dark:bg-blue-800/50 p-2 rounded text-center">5: Lengkap & terdokumentasi</div>
+                        <div class="bg-blue-100 dark:bg-blue-800/50 p-2 rounded text-center">5: Lengkap & terdokumentasi
+                        </div>
                     </div>
                 </div>
             </section>
@@ -232,15 +248,17 @@
             <!-- Form Section -->
             <form id="readiness-form" class="space-y-8">
                 <!-- Section A: Legalitas Usaha -->
-                <div class="bg-white dark:bg-dark-800 rounded-xl shadow-md p-6 question-container active" data-section="A">
+                <div class="bg-white dark:bg-dark-800 rounded-xl shadow-md p-6 question-container active"
+                    data-section="A">
                     <h2 class="text-xl font-bold mb-4 text-primary-600 dark:text-primary-400">A. Legalitas Usaha</h2>
-                    
+
                     <!-- Question 1 -->
                     <div class="mb-8">
-                        <p class="font-medium mb-4">1. Sejauh mana usaha Anda sudah memiliki legalitas seperti NIB, P-IRT/BPOM/MD?</p>
+                        <p class="font-medium mb-4">1. Sejauh mana usaha Anda sudah memiliki legalitas seperti NIB,
+                            P-IRT/BPOM/MD?</p>
                         <div class="grid grid-cols-5 gap-4">
                             <label class="radio-container">
-                                <input type="radio" name="q1" value="1" class="radio-input" >
+                                <input type="radio" name="q1" value="1" class="radio-input">
                                 <span class="radio-design"></span>
                                 <span class="radio-label">1</span>
                             </label>
@@ -266,13 +284,14 @@
                             </label>
                         </div>
                     </div>
-                    
+
                     <!-- Question 2 -->
                     <div>
-                        <p class="font-medium mb-4">2. Sejauh mana Anda memahami pentingnya sertifikasi halal bagi usaha Anda?</p>
+                        <p class="font-medium mb-4">2. Sejauh mana Anda memahami pentingnya sertifikasi halal bagi usaha
+                            Anda?</p>
                         <div class="grid grid-cols-5 gap-4">
                             <label class="radio-container">
-                                <input type="radio" name="q2" value="1" class="radio-input" >
+                                <input type="radio" name="q2" value="1" class="radio-input">
                                 <span class="radio-design"></span>
                                 <span class="radio-label">1</span>
                             </label>
@@ -302,14 +321,16 @@
 
                 <!-- Section B: Bahan Baku & Supplier -->
                 <div class="bg-white dark:bg-dark-800 rounded-xl shadow-md p-6 question-container" data-section="B">
-                    <h2 class="text-xl font-bold mb-4 text-primary-600 dark:text-primary-400">B. Bahan Baku & Supplier</h2>
-                    
+                    <h2 class="text-xl font-bold mb-4 text-primary-600 dark:text-primary-400">B. Bahan Baku & Supplier
+                    </h2>
+
                     <!-- Question 3 -->
                     <div class="mb-8">
-                        <p class="font-medium mb-4">3. Sejauh mana Anda mengetahui dan memastikan kehalalan bahan baku yang digunakan?</p>
+                        <p class="font-medium mb-4">3. Sejauh mana Anda mengetahui dan memastikan kehalalan bahan baku
+                            yang digunakan?</p>
                         <div class="grid grid-cols-5 gap-4">
                             <label class="radio-container">
-                                <input type="radio" name="q3" value="1" class="radio-input" >
+                                <input type="radio" name="q3" value="1" class="radio-input">
                                 <span class="radio-design"></span>
                                 <span class="radio-label">1</span>
                             </label>
@@ -335,13 +356,14 @@
                             </label>
                         </div>
                     </div>
-                    
+
                     <!-- Question 4 -->
                     <div>
-                        <p class="font-medium mb-4">4. Sejauh mana Anda menyimpan dan mencatat asal-usul bahan baku dari supplier?</p>
+                        <p class="font-medium mb-4">4. Sejauh mana Anda menyimpan dan mencatat asal-usul bahan baku dari
+                            supplier?</p>
                         <div class="grid grid-cols-5 gap-4">
                             <label class="radio-container">
-                                <input type="radio" name="q4" value="1" class="radio-input" >
+                                <input type="radio" name="q4" value="1" class="radio-input">
                                 <span class="radio-design"></span>
                                 <span class="radio-label">1</span>
                             </label>
@@ -372,13 +394,14 @@
                 <!-- Section C: Proses Produksi -->
                 <div class="bg-white dark:bg-dark-800 rounded-xl shadow-md p-6 question-container" data-section="C">
                     <h2 class="text-xl font-bold mb-4 text-primary-600 dark:text-primary-400">C. Proses Produksi</h2>
-                    
+
                     <!-- Question 5 -->
                     <div class="mb-8">
-                        <p class="font-medium mb-4">5. Sejauh mana Anda menerapkan pemisahan antara bahan/proses halal dan non-halal (jika relevan)?</p>
+                        <p class="font-medium mb-4">5. Sejauh mana Anda menerapkan pemisahan antara bahan/proses halal
+                            dan non-halal (jika relevan)?</p>
                         <div class="grid grid-cols-5 gap-4">
                             <label class="radio-container">
-                                <input type="radio" name="q5" value="1" class="radio-input" >
+                                <input type="radio" name="q5" value="1" class="radio-input">
                                 <span class="radio-design"></span>
                                 <span class="radio-label">1</span>
                             </label>
@@ -404,13 +427,14 @@
                             </label>
                         </div>
                     </div>
-                    
+
                     <!-- Question 6 -->
                     <div>
-                        <p class="font-medium mb-4">6. Sejauh mana alur produksi Anda sudah memiliki dokumentasi atau SOP tertulis?</p>
+                        <p class="font-medium mb-4">6. Sejauh mana alur produksi Anda sudah memiliki dokumentasi atau
+                            SOP tertulis?</p>
                         <div class="grid grid-cols-5 gap-4">
                             <label class="radio-container">
-                                <input type="radio" name="q6" value="1" class="radio-input" >
+                                <input type="radio" name="q6" value="1" class="radio-input">
                                 <span class="radio-design"></span>
                                 <span class="radio-label">1</span>
                             </label>
@@ -440,14 +464,16 @@
 
                 <!-- Section D: SDM & Pemahaman Halal -->
                 <div class="bg-white dark:bg-dark-800 rounded-xl shadow-md p-6 question-container" data-section="D">
-                    <h2 class="text-xl font-bold mb-4 text-primary-600 dark:text-primary-400">D. SDM & Pemahaman Halal</h2>
-                    
+                    <h2 class="text-xl font-bold mb-4 text-primary-600 dark:text-primary-400">D. SDM & Pemahaman Halal
+                    </h2>
+
                     <!-- Question 7 -->
                     <div class="mb-8">
-                        <p class="font-medium mb-4">7. Sejauh mana Anda dan tim memahami prinsip dasar kehalalan produk?</p>
+                        <p class="font-medium mb-4">7. Sejauh mana Anda dan tim memahami prinsip dasar kehalalan produk?
+                        </p>
                         <div class="grid grid-cols-5 gap-4">
                             <label class="radio-container">
-                                <input type="radio" name="q7" value="1" class="radio-input" >
+                                <input type="radio" name="q7" value="1" class="radio-input">
                                 <span class="radio-design"></span>
                                 <span class="radio-label">1</span>
                             </label>
@@ -473,13 +499,14 @@
                             </label>
                         </div>
                     </div>
-                    
+
                     <!-- Question 8 -->
                     <div>
-                        <p class="font-medium mb-4">8. Sejauh mana Anda memiliki staf khusus atau penanggung jawab aspek halal dalam produksi?</p>
+                        <p class="font-medium mb-4">8. Sejauh mana Anda memiliki staf khusus atau penanggung jawab aspek
+                            halal dalam produksi?</p>
                         <div class="grid grid-cols-5 gap-4">
                             <label class="radio-container">
-                                <input type="radio" name="q8" value="1" class="radio-input" >
+                                <input type="radio" name="q8" value="1" class="radio-input">
                                 <span class="radio-design"></span>
                                 <span class="radio-label">1</span>
                             </label>
@@ -510,13 +537,14 @@
                 <!-- Section E: Dokumentasi -->
                 <div class="bg-white dark:bg-dark-800 rounded-xl shadow-md p-6 question-container" data-section="E">
                     <h2 class="text-xl font-bold mb-4 text-primary-600 dark:text-primary-400">E. Dokumentasi</h2>
-                    
+
                     <!-- Question 9 -->
                     <div class="mb-8">
-                        <p class="font-medium mb-4">9. Sejauh mana Anda mencatat proses produksi harian (bahan masuk, hasil jadi, dll)?</p>
+                        <p class="font-medium mb-4">9. Sejauh mana Anda mencatat proses produksi harian (bahan masuk,
+                            hasil jadi, dll)?</p>
                         <div class="grid grid-cols-5 gap-4">
                             <label class="radio-container">
-                                <input type="radio" name="q9" value="1" class="radio-input" >
+                                <input type="radio" name="q9" value="1" class="radio-input">
                                 <span class="radio-design"></span>
                                 <span class="radio-label">1</span>
                             </label>
@@ -542,13 +570,14 @@
                             </label>
                         </div>
                     </div>
-                    
+
                     <!-- Question 10 -->
                     <div>
-                        <p class="font-medium mb-4">10. Sejauh mana Anda siap mengikuti audit halal oleh auditor dari LPH?</p>
+                        <p class="font-medium mb-4">10. Sejauh mana Anda siap mengikuti audit halal oleh auditor dari
+                            LPH?</p>
                         <div class="grid grid-cols-5 gap-4">
                             <label class="radio-container">
-                                <input type="radio" name="q10" value="1" class="radio-input" >
+                                <input type="radio" name="q10" value="1" class="radio-input">
                                 <span class="radio-design"></span>
                                 <span class="radio-label">1</span>
                             </label>
@@ -578,7 +607,8 @@
 
                 <!-- Submit Button -->
                 <div class="text-center">
-                    <button type="submit" id="submit-btn" class="bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105">
+                    <button type="submit" id="submit-btn"
+                        class="bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105">
                         Lihat Hasil Kesiapan
                     </button>
                 </div>
@@ -586,7 +616,9 @@
 
             <!-- Loading Animation (Hidden by default) -->
             <div id="loading-section" class="hidden text-center py-12">
-                <div class="loading-spinner inline-block w-16 h-16 border-4 border-primary-500 border-t-transparent rounded-full mb-4"></div>
+                <div
+                    class="loading-spinner inline-block w-16 h-16 border-4 border-primary-500 border-t-transparent rounded-full mb-4">
+                </div>
                 <h3 class="text-xl font-bold mb-2">Menganalisis Kesiapan Produk Anda</h3>
                 <p class="text-gray-600 dark:text-gray-400">Tunggu sebentar, kami sedang menghitung hasil...</p>
             </div>
@@ -596,18 +628,14 @@
                 <div class="result-card bg-white dark:bg-dark-800 rounded-xl shadow-md p-8 mb-8">
                     <div class="text-center mb-8">
                         <h2 class="text-2xl font-bold mb-2">Hasil Kesiapan Sertifikasi Halal</h2>
-                        <p class="text-gray-600 dark:text-gray-400">Berdasarkan jawaban Anda, berikut tingkat kesiapan produk Anda:</p>
+                        <p class="text-gray-600 dark:text-gray-400">Berdasarkan jawaban Anda, berikut tingkat kesiapan
+                            produk Anda:</p>
                     </div>
-                    
+
                     <!-- Score Circle -->
                     <div class="flex flex-col items-center mb-8">
                         <div class="relative w-48 h-48 mb-4">
-                            <svg class="w-full h-full" viewBox="0 0 100 100">
-                                <!-- Background circle -->
-                                <circle cx="50" cy="50" r="45" fill="none" stroke="#e5e7eb" stroke-width="8" class="dark:stroke-dark-600"/>
-                                <!-- Progress circle -->
-                                <circle id="score-circle" cx="50" cy="50" r="45" fill="none" stroke="#22c55e" stroke-width="8" stroke-linecap="round" transform="rotate(-90 50 50)" stroke-dasharray="283" stroke-dashoffset="283"/>
-                            </svg>
+                            <div id="scoreCircle"></div>
                             <div class="absolute inset-0 flex items-center justify-center flex-col">
                                 <span id="score-percentage" class="text-4xl font-bold">0%</span>
                                 <span class="text-gray-600 dark:text-gray-400">Total Skor</span>
@@ -617,7 +645,7 @@
                             <!-- Result message will be inserted here by JavaScript -->
                         </div>
                     </div>
-                    
+
                     <!-- Score Interpretation -->
                     <div class="mb-8">
                         <h3 class="text-lg font-bold mb-4">📊 Interpretasi Skor</h3>
@@ -625,34 +653,38 @@
                             <div class="flex items-center">
                                 <div class="w-4 h-4 bg-green-600 rounded-full mr-3"></div>
                                 <div>
-                                    <span class="font-medium">80–100%:</span> 
-                                    <span class="text-gray-600 dark:text-gray-400">Sangat siap - Anda bisa langsung memulai proses sertifikasi</span>
+                                    <span class="font-medium">80–100%:</span>
+                                    <span class="text-gray-600 dark:text-gray-400">Sangat siap - Anda bisa langsung
+                                        memulai proses sertifikasi</span>
                                 </div>
                             </div>
                             <div class="flex items-center">
                                 <div class="w-4 h-4 bg-green-400 rounded-full mr-3"></div>
                                 <div>
-                                    <span class="font-medium">60–79%:</span> 
-                                    <span class="text-gray-600 dark:text-gray-400">Siap, perlu sedikit pendampingan</span>
+                                    <span class="font-medium">60–79%:</span>
+                                    <span class="text-gray-600 dark:text-gray-400">Siap, perlu sedikit
+                                        pendampingan</span>
                                 </div>
                             </div>
                             <div class="flex items-center">
                                 <div class="w-4 h-4 bg-yellow-400 rounded-full mr-3"></div>
                                 <div>
-                                    <span class="font-medium">40–59%:</span> 
-                                    <span class="text-gray-600 dark:text-gray-400">Butuh pendampingan cukup intensif</span>
+                                    <span class="font-medium">40–59%:</span>
+                                    <span class="text-gray-600 dark:text-gray-400">Butuh pendampingan cukup
+                                        intensif</span>
                                 </div>
                             </div>
                             <div class="flex items-center">
                                 <div class="w-4 h-4 bg-red-500 rounded-full mr-3"></div>
                                 <div>
-                                    <span class="font-medium">&lt; 40%:</span> 
-                                    <span class="text-gray-600 dark:text-gray-400">Belum siap, butuh pembinaan awal</span>
+                                    <span class="font-medium">&lt; 40%:</span>
+                                    <span class="text-gray-600 dark:text-gray-400">Belum siap, butuh pembinaan
+                                        awal</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Detailed Breakdown -->
                     <div>
                         <h3 class="text-lg font-bold mb-4">🔍 Detail Per Kategori</h3>
@@ -663,7 +695,8 @@
                                     <span id="score-a" class="font-medium">0/10</span>
                                 </div>
                                 <div class="w-full bg-gray-200 dark:bg-dark-700 rounded-full h-2">
-                                    <div id="progress-a" class="bg-primary-600 h-2 rounded-full" style="width: 0%"></div>
+                                    <div id="progress-a" class="bg-primary-600 h-2 rounded-full" style="width: 0%">
+                                    </div>
                                 </div>
                             </div>
                             <div>
@@ -672,7 +705,8 @@
                                     <span id="score-b" class="font-medium">0/10</span>
                                 </div>
                                 <div class="w-full bg-gray-200 dark:bg-dark-700 rounded-full h-2">
-                                    <div id="progress-b" class="bg-primary-600 h-2 rounded-full" style="width: 0%"></div>
+                                    <div id="progress-b" class="bg-primary-600 h-2 rounded-full" style="width: 0%">
+                                    </div>
                                 </div>
                             </div>
                             <div>
@@ -681,7 +715,8 @@
                                     <span id="score-c" class="font-medium">0/10</span>
                                 </div>
                                 <div class="w-full bg-gray-200 dark:bg-dark-700 rounded-full h-2">
-                                    <div id="progress-c" class="bg-primary-600 h-2 rounded-full" style="width: 0%"></div>
+                                    <div id="progress-c" class="bg-primary-600 h-2 rounded-full" style="width: 0%">
+                                    </div>
                                 </div>
                             </div>
                             <div>
@@ -690,7 +725,8 @@
                                     <span id="score-d" class="font-medium">0/10</span>
                                 </div>
                                 <div class="w-full bg-gray-200 dark:bg-dark-700 rounded-full h-2">
-                                    <div id="progress-d" class="bg-primary-600 h-2 rounded-full" style="width: 0%"></div>
+                                    <div id="progress-d" class="bg-primary-600 h-2 rounded-full" style="width: 0%">
+                                    </div>
                                 </div>
                             </div>
                             <div>
@@ -699,13 +735,14 @@
                                     <span id="score-e" class="font-medium">0/10</span>
                                 </div>
                                 <div class="w-full bg-gray-200 dark:bg-dark-700 rounded-full h-2">
-                                    <div id="progress-e" class="bg-primary-600 h-2 rounded-full" style="width: 0%"></div>
+                                    <div id="progress-e" class="bg-primary-600 h-2 rounded-full" style="width: 0%">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Recommendation Section -->
                 <div class="result-card bg-white dark:bg-dark-800 rounded-xl shadow-md p-8 mb-8">
                     <h2 class="text-xl font-bold mb-4">📌 Rekomendasi untuk Anda</h2>
@@ -713,12 +750,15 @@
                         <!-- Recommendations will be inserted here by JavaScript -->
                     </div>
                 </div>
-                
+
                 <!-- CTA Section -->
-                <div class="result-card bg-gradient-to-r from-primary-600 to-primary-700 rounded-xl shadow-md p-8 text-center text-white">
+                <div
+                    class="result-card bg-gradient-to-r from-primary-600 to-primary-700 rounded-xl shadow-md p-8 text-center text-white">
                     <h2 class="text-xl font-bold mb-4">Siap Mendaftar Sertifikasi Halal?</h2>
-                    <p class="mb-6">Tim kami siap membantu Anda melalui seluruh proses sertifikasi halal dengan mudah dan cepat.</p>
-                    <a href="index.html#daftar" class="inline-block bg-white hover:bg-gray-100 text-primary-700 font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105">
+                    <p class="mb-6">Tim kami siap membantu Anda melalui seluruh proses sertifikasi halal dengan mudah
+                        dan cepat.</p>
+                    <a href="index.html#daftar"
+                        class="inline-block bg-white hover:bg-gray-100 text-primary-700 font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105">
                         Konsultasi Gratis Sekarang
                     </a>
                 </div>
@@ -742,15 +782,16 @@
             </div>
         </div>
     </footer>
-    
+
 
     <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/6281234567890" class="fixed bottom-6 right-6 bg-green-600 hover:bg-green-700 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition transform hover:scale-110">
+    <a href="https://wa.me/6281234567890"
+        class="fixed bottom-6 right-6 bg-green-600 hover:bg-green-700 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition transform hover:scale-110">
         <i class="fab fa-whatsapp text-2xl"></i>
     </a>
 
     <!-- JavaScript -->
-     <!-- SweetAlert2 CSS & JS -->
+    <!-- SweetAlert2 CSS & JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
@@ -760,9 +801,9 @@
         const html = document.documentElement;
 
         // Check for saved user preference or use system preference
-        const savedTheme = localStorage.getItem('theme') || 
-                          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-        
+        const savedTheme = localStorage.getItem('theme') ||
+            (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
         // Apply the saved theme
         if (savedTheme === 'dark') {
             html.classList.add('dark');
@@ -791,21 +832,21 @@
         const progressBar = document.querySelector('.progress-bar');
         const progressText = document.getElementById('progress-text');
         const questionContainers = document.querySelectorAll('.question-container');
-        
+
         // Update progress bar as user answers questions
         questions.forEach(question => {
             question.addEventListener('change', updateProgress);
         });
-        
+
         function updateProgress() {
             const answered = Array.from(questions).filter(q => q.checked).length;
             const totalRadio = questions.length;
             const total = totalRadio / 5;
             const progress = Math.round((answered / total) * 100);
-            
+
             progressBar.style.width = `${progress}%`;
             progressText.textContent = `${progress}%`;
-            
+
             // Highlight current section
             let currentSection = '';
             for (let i = 0; i < questions.length; i++) {
@@ -814,7 +855,7 @@
                     break;
                 }
             }
-            
+
             questionContainers.forEach(container => {
                 if (container.dataset.section === currentSection || currentSection === '') {
                     container.classList.add('active');
@@ -823,72 +864,72 @@
                 }
             });
         }
-        
+
         // Form Submission
         // form.addEventListener('submit', function(e) {
         //     e.preventDefault();
-            
+
         //     // Check if all questions are answered
         //     const allAnswered = Array.from(questions).every(q => {
         //         const name = q.getAttribute('name');
         //         return document.querySelector(`input[name="${name}"]:checked`);
         //     });
-            
+
         //     if (!allAnswered) {
         //         console.log("ini belum diisi kalo masuk kesini")
         //         alert('Silakan jawab semua pertanyaan sebelum melihat hasil.');
         //         return;
         //     }
-            
+
         //     // Show loading animation
         //     form.classList.add('hidden');
         //     document.getElementById('loading-section').classList.remove('hidden');
-            
+
         //     // Simulate processing delay
         //     setTimeout(showResults, 2000);
         // });
 
-        form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             // Check if all questions are answered
             const allAnswered = Array.from(questions).every(q => {
                 const name = q.getAttribute('name');
                 return document.querySelector(`input[name="${name}"]:checked`);
             });
-            
+
             if (!allAnswered) {
                 Swal.fire({
-                icon: 'warning',
-                title: 'Belum Lengkap',
-                text: 'Silakan jawab semua pertanyaan sebelum melihat hasil.',
-                iconColor: '#FBBF24',
-                confirmButtonText: 'Lanjutkan Mengisi',
-                confirmButtonColor: '#296253',
-                background: document.documentElement.classList.contains('dark') ? '#1f2937' : '#ffffff',
-                color: document.documentElement.classList.contains('dark') ? '#f3f4f6' : '#111827',
-                padding: '1.5rem',
-                customClass: {
-                    popup: 'rounded-xl shadow-md'
-                }
-            });
+                    icon: 'warning',
+                    title: 'Belum Lengkap',
+                    text: 'Silakan jawab semua pertanyaan sebelum melihat hasil.',
+                    iconColor: '#FBBF24',
+                    confirmButtonText: 'Lanjutkan Mengisi',
+                    confirmButtonColor: '#296253',
+                    background: document.documentElement.classList.contains('dark') ? '#1f2937' : '#ffffff',
+                    color: document.documentElement.classList.contains('dark') ? '#f3f4f6' : '#111827',
+                    padding: '1.5rem',
+                    customClass: {
+                        popup: 'rounded-xl shadow-md'
+                    }
+                });
                 return;
             }
-            
+
             // Show loading animation
             form.classList.add('hidden');
             document.getElementById('loading-section').classList.remove('hidden');
-            
+
             // Simulate processing delay
             setTimeout(showResults, 2000);
         });
 
-        
+
         function showResults() {
             // Hide loading, show results
             document.getElementById('loading-section').classList.add('hidden');
             document.getElementById('result-section').classList.remove('hidden');
-            
+
             // Calculate scores
             const scores = {
                 a: calculateSectionScore(['q1', 'q2']),
@@ -897,21 +938,44 @@
                 d: calculateSectionScore(['q7', 'q8']),
                 e: calculateSectionScore(['q9', 'q10'])
             };
-            
+
             const totalScore = Object.values(scores).reduce((a, b) => a + b, 0);
             const percentage = Math.round((totalScore / 50) * 100);
-            
+
             // Animate score circle
+            const scoreCircle = document.getElementById('scoreCircle');
+
+            // Determine stroke color based on score
+            let strokeColor;
+            if (percentage >= 80) {
+                strokeColor = "rgb(22, 163, 74)"; // Green-600
+            } else if (percentage >= 60) {
+                strokeColor = "rgb(74, 222, 128)"; // Green-400
+            } else if (percentage >= 40) {
+                strokeColor = "rgb(250, 204, 21)"; // Yellow-400
+            } else {
+                strokeColor = "rgb(239, 68, 68)"; // Red-500
+            }
+
+            scoreCircle.innerHTML = /*html*/ `
+                <svg class="w-full h-full" viewBox="0 0 100 100">
+                    <!-- Background circle -->
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="#e5e7eb" stroke-width="8" class="dark:stroke-dark-600"/>
+                    <!-- Progress circle -->
+                    <circle id="score-circle" cx="50" cy="50" r="45" fill="none" stroke="${strokeColor}" stroke-width="8" stroke-linecap="round" transform="rotate(-90 50 50)" stroke-dasharray="283" stroke-dashoffset="283"/>
+                </svg>
+            `;
             const circle = document.getElementById('score-circle');
+
             const circumference = 2 * Math.PI * 45;
             const offset = circumference - (percentage / 100) * circumference;
-            
+
             // Set CSS variable for animation
             document.documentElement.style.setProperty('--offset', offset);
-            
+
             // Apply animation
             circle.style.animation = 'circle-fill 1.5s ease-out forwards';
-            
+
             // Update score displays
             document.getElementById('score-percentage').textContent = `${percentage}%`;
             document.getElementById('score-a').textContent = `${scores.a}/10`;
@@ -919,19 +983,19 @@
             document.getElementById('score-c').textContent = `${scores.c}/10`;
             document.getElementById('score-d').textContent = `${scores.d}/10`;
             document.getElementById('score-e').textContent = `${scores.e}/10`;
-            
+
             // Animate progress bars
             animateProgress('progress-a', scores.a / 10 * 100);
             animateProgress('progress-b', scores.b / 10 * 100);
             animateProgress('progress-c', scores.c / 10 * 100);
             animateProgress('progress-d', scores.d / 10 * 100);
             animateProgress('progress-e', scores.e / 10 * 100);
-            
+
             // Show result message
             const resultMessage = document.getElementById('result-message');
             let message = '';
             let colorClass = '';
-            
+
             if (percentage >= 80) {
                 message = 'Selamat! Produk Anda sangat siap untuk proses sertifikasi halal. Anda dapat langsung memulai pengajuan sertifikasi.';
                 colorClass = 'text-green-600 dark:text-green-400';
@@ -945,13 +1009,13 @@
                 message = 'Produk Anda belum siap untuk sertifikasi halal dan membutuhkan pembinaan awal. Tim kami dapat membantu Anda mempersiapkan dari dasar.';
                 colorClass = 'text-red-600 dark:text-red-400';
             }
-            
+
             resultMessage.innerHTML = `<p class="text-lg font-medium ${colorClass}">${message}</p>`;
-            
+
             // Generate recommendations
             const recommendationContent = document.getElementById('recommendation-content');
             let recommendations = '<div class="space-y-4">';
-            
+
             // Recommendation for Legalitas Usaha
             if (scores.a >= 8) {
                 recommendations += `<div class="flex items-start">
@@ -974,7 +1038,7 @@
                     </div>
                 </div>`;
             }
-            
+
             // Recommendation for Bahan Baku
             if (scores.b >= 8) {
                 recommendations += `<div class="flex items-start">
@@ -997,7 +1061,7 @@
                     </div>
                 </div>`;
             }
-            
+
             // Recommendation for Proses Produksi
             if (scores.c >= 8) {
                 recommendations += `<div class="flex items-start">
@@ -1020,7 +1084,7 @@
                     </div>
                 </div>`;
             }
-            
+
             // Recommendation for SDM
             if (scores.d >= 8) {
                 recommendations += `<div class="flex items-start">
@@ -1043,7 +1107,7 @@
                     </div>
                 </div>`;
             }
-            
+
             // Recommendation for Dokumentasi
             if (scores.e >= 8) {
                 recommendations += `<div class="flex items-start">
@@ -1066,17 +1130,17 @@
                     </div>
                 </div>`;
             }
-            
+
             recommendations += '</div>';
             recommendationContent.innerHTML = recommendations;
-            
+
             // Scroll to results
             window.scrollTo({
                 top: document.getElementById('result-section').offsetTop - 80,
                 behavior: 'smooth'
             });
         }
-        
+
         function calculateSectionScore(questionNames) {
             let score = 0;
             questionNames.forEach(name => {
@@ -1087,7 +1151,7 @@
             });
             return score;
         }
-        
+
         function animateProgress(elementId, percentage) {
             const element = document.getElementById(elementId);
             let width = 0;
@@ -1100,9 +1164,10 @@
                 }
             }, 10);
         }
-        
+
         // Initialize progress tracking
         updateProgress();
     </script>
 </body>
+
 </html>
