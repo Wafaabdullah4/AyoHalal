@@ -419,17 +419,17 @@
                     <div>
                         <label for="nama" class="block text-gray-300 text-left mb-2">Nama Lengkap</label>
                         <input type="text" id="nama"
-                            class="w-full bg-light-700 dark:bg-dark-700 border border-light-600 dark:border-dark-600 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-primary-500">
+                            class="w-full bg-light-700 dark:bg-dark-700 border border-light-600 dark:border-dark-600 rounded-lg py-3 px-4 light:text-white focus:outline-none focus:ring-2 focus:ring-primary-500">
                     </div>
                     <div>
                         <label for="wa" class="block text-gray-300 text-left mb-2">Nomor WhatsApp</label>
                         <input type="tel" id="wa"
-                            class="w-full bg-light-700 dark:bg-dark-700 border border-light-600 dark:border-dark-600 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-primary-500">
+                            class="w-full bg-light-700 dark:bg-dark-700 border border-light-600 dark:border-dark-600 rounded-lg py-3 px-4 light:text-white focus:outline-none focus:ring-2 focus:ring-primary-500">
                     </div>
                     <div>
                         <label for="usaha" class="block text-gray-300 text-left mb-2">Jenis Usaha</label>
                         <select id="usaha"
-                            class="w-full bg-light-700 dark:bg-dark-700 border border-light-600 dark:border-dark-600 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-primary-500">
+                            class="w-full bg-light-700 dark:bg-dark-700 border border-light-600 dark:border-dark-600 rounded-lg py-3 px-4 light:text-white focus:outline-none focus:ring-2 focus:ring-primary-500">
                             <option value="">Pilih Jenis Usaha</option>
                             <option value="makanan">Makanan</option>
                             <option value="minuman">Minuman</option>
@@ -439,21 +439,15 @@
                         </select>
                     </div>
                     <div>
-                        <label for="paket" class="block text-gray-300 text-left mb-2">Paket yang Diminati</label>
-                        <select id="paket"
-                            class="w-full bg-light-700 dark:bg-dark-700 border border-light-600 dark:border-dark-600 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-primary-500">
-                            <option value="">Pilih Paket</option>
-                            <option value="basic">Paket Basic</option>
-                            <option value="lengkap">Paket Lengkap</option>
-                            <option value="custom">Paket Custom</option>
-                            <option value="konsultasi">Konsultasi Dulu</option>
-                        </select>
+                        <label for="alamat" class="block text-gray-300 text-left mb-2">Alamat Lengkap</label>
+                        <input type="tel" id="alamat"
+                            class="w-full bg-light-700 dark:bg-dark-700 border border-light-600 dark:border-dark-600 rounded-lg py-3 px-4 light:text-white focus:outline-none focus:ring-2 focus:ring-primary-500">
                     </div>
                 </div>
                 <div class="mb-6">
                     <label for="pesan" class="block text-gray-300 text-left mb-2">Pertanyaan atau Pesan</label>
                     <textarea id="pesan" rows="3"
-                        class="w-full bg-light-700 dark:bg-dark-700 border border-light-600 dark:border-dark-600 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-primary-500"></textarea>
+                        class="w-full bg-light-700 dark:bg-dark-700 border border-light-600 dark:border-dark-600 rounded-lg py-3 px-4 light:text-white focus:outline-none focus:ring-2 focus:ring-primary-500"></textarea>
                 </div>
                 <button type="submit"
                     class="w-full md:w-auto bg-white hover:bg-gray-100 text-primary-700 font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105">
@@ -464,83 +458,90 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="kontak" class="py-16 px-4 bg-dark-900">
+    <section id="kontak" class="py-16 px-4 bg-white dark:bg-dark-900 transition-colors">
         <div class="container mx-auto">
             <div class="grid md:grid-cols-2 gap-12">
                 <div>
-                    <h2 class="text-3xl font-bold mb-6">Hubungi <span class="text-primary-500">Kami</span></h2>
-                    <p class="text-gray-400 mb-8">Kami siap membantu Anda mendapatkan sertifikat halal dengan mudah dan
-                        cepat.</p>
+                    <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
+                        Hubungi <span class="text-primary-500">Kami</span>
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-400 mb-8">
+                        Kami siap membantu Anda mendapatkan sertifikat halal dengan mudah dan cepat.
+                    </p>
                     <div class="space-y-6">
                         <div class="flex items-start">
                             <div
-                                class="bg-primary-900 text-primary-500 w-10 h-10 rounded-full flex items-center justify-center mr-4 mt-1">
+                                class="bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-500 w-10 h-10 rounded-full flex items-center justify-center mr-4 mt-1">
                                 <i class="fas fa-phone-alt"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold">Telepon/WhatsApp</h4>
+                                <h4 class="font-bold text-gray-800 dark:text-white">Telepon/WhatsApp</h4>
                                 <a href="https://wa.me/6282138365139"
-                                    class="text-gray-400 hover:text-primary-500 transition">+62 821-3836-5139</a>
+                                    class="text-gray-600 dark:text-gray-400 hover:text-primary-500 transition">+62
+                                    821-3836-5139</a>
                             </div>
                         </div>
                         <div class="flex items-start">
                             <div
-                                class="bg-primary-900 text-primary-500 w-10 h-10 rounded-full flex items-center justify-center mr-4 mt-1">
+                                class="bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-500 w-10 h-10 rounded-full flex items-center justify-center mr-4 mt-1">
                                 <i class="fas fa-envelope"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold">Email</h4>
+                                <h4 class="font-bold text-gray-800 dark:text-white">Email</h4>
                                 <a href="mailto:info@ayohalal.com"
-                                    class="text-gray-400 hover:text-primary-500 transition">info@ayohalal.com</a>
+                                    class="text-gray-600 dark:text-gray-400 hover:text-primary-500 transition">info@ayohalal.com</a>
                             </div>
                         </div>
                         <div class="flex items-start">
                             <div
-                                class="bg-primary-900 text-primary-500 w-10 h-10 rounded-full flex items-center justify-center mr-4 mt-1">
+                                class="bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-500 w-10 h-10 rounded-full flex items-center justify-center mr-4 mt-1">
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold">Alamat Kantor</h4>
-                                <p class="text-gray-400">Jl. Sertifikasi Halal No. 123, Gedung Halal Center Lt. 5,
-                                    Jakarta Selatan 12540</p>
+                                <h4 class="font-bold text-gray-800 dark:text-white">Alamat Kantor</h4>
+                                <p class="text-gray-600 dark:text-gray-400">
+                                    Jl. Sertifikasi Halal No. 123, Gedung Halal Center Lt. 5, Jakarta Selatan 12540
+                                </p>
                             </div>
                         </div>
                         <div class="flex items-start">
                             <div
-                                class="bg-primary-900 text-primary-500 w-10 h-10 rounded-full flex items-center justify-center mr-4 mt-1">
+                                class="bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-500 w-10 h-10 rounded-full flex items-center justify-center mr-4 mt-1">
                                 <i class="fas fa-clock"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold">Jam Operasional</h4>
-                                <p class="text-gray-400">Senin-Jumat: 09.00 - 17.00 WIB<br>Sabtu: 09.00 - 14.00 WIB</p>
+                                <h4 class="font-bold text-gray-800 dark:text-white">Jam Operasional</h4>
+                                <p class="text-gray-600 dark:text-gray-400">
+                                    Senin-Jumat: 09.00 - 17.00 WIB<br>Sabtu: 09.00 - 14.00 WIB
+                                </p>
                             </div>
                         </div>
                     </div>
                     <div class="mt-8">
-                        <h4 class="font-bold mb-4">Ikuti Kami</h4>
+                        <h4 class="font-bold text-gray-800 dark:text-white mb-4">Ikuti Kami</h4>
                         <div class="flex space-x-4">
                             <a href="#"
-                                class="bg-dark-800 hover:bg-dark-700 w-10 h-10 rounded-full flex items-center justify-center transition">
-                                <i class="fab fa-instagram text-xl"></i>
+                                class="bg-gray-100 dark:bg-dark-800 hover:bg-gray-200 dark:hover:bg-dark-700 w-10 h-10 rounded-full flex items-center justify-center transition">
+                                <i class="fab fa-instagram text-xl text-gray-800 dark:text-white"></i>
                             </a>
                             <a href="#"
-                                class="bg-dark-800 hover:bg-dark-700 w-10 h-10 rounded-full flex items-center justify-center transition">
-                                <i class="fab fa-facebook-f text-xl"></i>
+                                class="bg-gray-100 dark:bg-dark-800 hover:bg-gray-200 dark:hover:bg-dark-700 w-10 h-10 rounded-full flex items-center justify-center transition">
+                                <i class="fab fa-facebook-f text-xl text-gray-800 dark:text-white"></i>
                             </a>
                             <a href="#"
-                                class="bg-dark-800 hover:bg-dark-700 w-10 h-10 rounded-full flex items-center justify-center transition">
-                                <i class="fab fa-youtube text-xl"></i>
+                                class="bg-gray-100 dark:bg-dark-800 hover:bg-gray-200 dark:hover:bg-dark-700 w-10 h-10 rounded-full flex items-center justify-center transition">
+                                <i class="fab fa-youtube text-xl text-gray-800 dark:text-white"></i>
                             </a>
                             <a href="#"
-                                class="bg-dark-800 hover:bg-dark-700 w-10 h-10 rounded-full flex items-center justify-center transition">
-                                <i class="fab fa-linkedin-in text-xl"></i>
+                                class="bg-gray-100 dark:bg-dark-800 hover:bg-gray-200 dark:hover:bg-dark-700 w-10 h-10 rounded-full flex items-center justify-center transition">
+                                <i class="fab fa-linkedin-in text-xl text-gray-800 dark:text-white"></i>
                             </a>
                         </div>
                     </div>
                 </div>
                 <div>
-                    <div class="bg-dark-800 rounded-xl p-6 h-full">
-                        <h3 class="text-xl font-bold mb-6">Lokasi Kantor Kami</h3>
+                    <div class="bg-gray-100 dark:bg-dark-800 rounded-xl p-6 h-full">
+                        <h3 class="text-xl font-bold mb-6 text-gray-800 dark:text-white">Lokasi Kantor Kami</h3>
                         <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden">
                             <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.8195613507864!3d-6.194741395493371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5390917b759%3A0x9cb5e5ef99b5a3f1!2sHalal%20Center%20Indonesia!5e0!3m2!1sen!2sid!4v1621234567890!5m2!1sen!2sid"
