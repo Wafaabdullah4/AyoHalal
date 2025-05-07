@@ -750,18 +750,8 @@
                         <!-- Recommendations will be inserted here by JavaScript -->
                     </div>
                 </div>
-
-                <!-- CTA Section -->
-                <div
-                    class="result-card bg-gradient-to-r from-primary-600 to-primary-700 rounded-xl shadow-md p-8 text-center text-white">
-                    <h2 class="text-xl font-bold mb-4">Siap Mendaftar Sertifikasi Halal?</h2>
-                    <p class="mb-6">Tim kami siap membantu Anda melalui seluruh proses sertifikasi halal dengan mudah
-                        dan cepat.</p>
-                    <a href="index.html#daftar"
-                        class="inline-block bg-white hover:bg-gray-100 text-primary-700 font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105">
-                        Konsultasi Gratis Sekarang
-                    </a>
-                </div>
+                
+               
             </div>
         </div>
     </main>
@@ -1016,6 +1006,7 @@
             const recommendationContent = document.getElementById('recommendation-content');
             let recommendations = '<div class="space-y-4">';
 
+
             // Recommendation for Legalitas Usaha
             if (scores.a >= 8) {
                 recommendations += `<div class="flex items-start">
@@ -1038,6 +1029,7 @@
                     </div>
                 </div>`;
             }
+
 
             // Recommendation for Bahan Baku
             if (scores.b >= 8) {
@@ -1062,6 +1054,7 @@
                 </div>`;
             }
 
+
             // Recommendation for Proses Produksi
             if (scores.c >= 8) {
                 recommendations += `<div class="flex items-start">
@@ -1085,55 +1078,69 @@
                 </div>`;
             }
 
-            // Recommendation for SDM
-            if (scores.d >= 8) {
-                recommendations += `<div class="flex items-start">
-                    <div class="bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 w-6 h-6 rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0">
-                        <i class="fas fa-check text-xs"></i>
-                    </div>
-                    <div>
-                        <p class="font-medium">SDM & Pemahaman Halal (Skor ${scores.d}/10)</p>
-                        <p class="text-gray-600 dark:text-gray-400">Pemahaman halal tim Anda sudah baik. Lakukan refreshing pengetahuan halal secara berkala untuk semua staf.</p>
-                    </div>
-                </div>`;
-            } else {
-                recommendations += `<div class="flex items-start">
-                    <div class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 w-6 h-6 rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0">
-                        <i class="fas fa-info-circle text-xs"></i>
-                    </div>
-                    <div>
-                        <p class="font-medium">SDM & Pemahaman Halal (Skor ${scores.d}/10)</p>
-                        <p class="text-gray-600 dark:text-gray-400">Anda perlu meningkatkan pemahaman halal tim dan menunjuk penanggung jawab halal. Kami menyediakan pelatihan halal untuk UMKM.</p>
-                    </div>
-                </div>`;
-            }
+            // Blurred section for remaining recommendations (D and E) with attractive CTA
+            recommendations += `
 
-            // Recommendation for Dokumentasi
-            if (scores.e >= 8) {
-                recommendations += `<div class="flex items-start">
-                    <div class="bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 w-6 h-6 rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0">
-                        <i class="fas fa-check text-xs"></i>
-                    </div>
-                    <div>
-                        <p class="font-medium">Dokumentasi (Skor ${scores.e}/10)</p>
-                        <p class="text-gray-600 dark:text-gray-400">Sistem dokumentasi Anda sudah siap untuk audit halal. Pastikan semua catatan tersimpan rapi dan mudah diakses.</p>
-                    </div>
-                </div>`;
-            } else {
-                recommendations += `<div class="flex items-start">
-                    <div class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 w-6 h-6 rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0">
-                        <i class="fas fa-info-circle text-xs"></i>
-                    </div>
-                    <div>
-                        <p class="font-medium">Dokumentasi (Skor ${scores.e}/10)</p>
-                        <p class="text-gray-600 dark:text-gray-400">Anda perlu meningkatkan sistem dokumentasi produksi dan mempersiapkan tim untuk audit halal. Kami bisa membantu simulasi audit.</p>
-                    </div>
-                </div>`;
-            }
 
-            recommendations += '</div>';
+                <div class="relative mt-6">
+                    <div class="blur-md select-none space-y-4">
+                        <!-- Recommendation D -->
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 w-6 h-6 rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fas fa-info-circle text-xs"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium">SDM & Pemahaman Halal (Skor ${scores.d}/10)</p>
+                                <p class="text-gray-600 dark:text-gray-400">Anda perlu meningkatkan pemahaman halal tim dan menunjuk penanggung jawab halal. Kami menyediakan pelatihan halal untuk UMKM.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Recommendation E -->
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 w-6 h-6 rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fas fa-info-circle text-xs"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium">Dokumentasi (Skor ${scores.e}/10)</p>
+                                <p class="text-gray-600 dark:text-gray-400">Anda perlu meningkatkan sistem dokumentasi produksi dan mempersiapkan tim untuk audit halal. Kami bisa membantu simulasi audit.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Additional hidden value teaser -->
+                        <div class="flex items-start">
+                            <div class="bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-200 w-6 h-6 rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fas fa-star text-xs"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium">Bonus: Rencana Implementasi</p>
+                                <p class="text-gray-600 dark:text-gray-400">Dapatkan timeline dan rencana implementasi khusus untuk bisnis Anda ketika berkonsultasi dengan tim ahli kami.</p>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- CTA Section -->
+                    <div class="result-card bg-gradient-to-r from-primary-600 to-primary-700 dark:from-primary-600 dark:to-primary-500 rounded-xl shadow-md p-8 text-center text-white">
+                        <h2 class="text-xl font-bold mb-4">Siap Mendaftar Sertifikasi Halal?</h2>
+                        <p class="mb-6">Tim kami siap membantu Anda melalui seluruh proses sertifikasi halal dengan mudah dan cepat.</p>
+                        <a href="index.html#daftar" class="inline-block bg-white hover:bg-gray-100 text-primary-700 font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105">
+                            Konsultasi Gratis Sekarang
+                        </a>
+                    </div>
+                    
+           
+                </div>
+            `;
+
+            recommendations += '</div>'; // Close space-y-4 div
             recommendationContent.innerHTML = recommendations;
 
+            // Function to show all recommendations
+            function showFullRecommendations() {
+                // Implementasi untuk menampilkan semua rekomendasi
+                // Bisa juga redirect ke halaman konsultasi atau membuka modal
+                console.log("Redirect to consultation page or show full recommendations");
+                // Contoh: window.location.href = '/konsultasi';
+            }
+            
             // Scroll to results
             window.scrollTo({
                 top: document.getElementById('result-section').offsetTop - 80,
