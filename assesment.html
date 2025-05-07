@@ -220,6 +220,100 @@
 
     <!-- Main Content -->
     <main class="pt-24 pb-12 px-4">
+        <!-- Tampilan untuk menampilkan data dari localStorage -->
+<section class="py-12 px-4 bg-gray-50 dark:bg-dark-800">
+    <div class="container mx-auto max-w-4xl">
+        <div class="bg-white dark:bg-dark-700 rounded-xl shadow-md p-6 md:p-8">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-800 dark:text-white mb-6">Paket yang Anda Pilih</h2>
+            
+            <div id="packageDisplay" class="border border-gray-200 dark:border-gray-600 rounded-lg p-6">
+                <div class="text-center py-8">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-gray-400 dark:text-gray-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    </svg>
+                    <p class="text-gray-500 dark:text-gray-400">Tidak ada data paket yang tersimpan</p>
+                </div>
+            </div>
+            
+            <div class="mt-6 flex flex-col sm:flex-row justify-end gap-4">
+                <button onclick="clearPackage()" class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 transition">
+                    Hapus Paket
+                </button>
+                <a href="index.html" class="px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg text-center transition">
+                    Kembali ke Beranda
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Tambahkan ini di bagian bawah tampilan package display yang sebelumnya -->
+<!-- <div class="mt-8">
+    <button onclick="sendWhatsAppMessage()" class="w-full md:w-auto bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg flex items-center justify-center gap-2 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+        </svg>
+        Kirim via WhatsApp
+    </button>
+</div> -->
+
+<script>
+    // Fungsi untuk mengirim data ke WhatsApp
+    function sendWhatsAppMessage() {
+        const savedPackage = localStorage.getItem('selectedPackage');
+        
+        if (!savedPackage) {
+            alert('Tidak ada paket yang dipilih');
+            return;
+        }
+        
+        const packageData = JSON.parse(savedPackage);
+        const phoneNumber = '+6285778445682'; // Nomor tujuan
+        // const phoneNumber = '+6282138365139'; // Nomor tujuan
+        
+        // Format pesan WhatsApp
+        const message = `Halo, saya tertarik dengan *${packageData.name}* (Rp${packageData.price.toLocaleString('id-ID')}) untuk sertifikasi halal.\n\nBerikut detail paket yang saya pilih:\n${getWhatsAppPackageDetails(packageData.name)}\n\nSaya ingin memulai proses ini. Bagaimana caranya?`;
+        
+        // Encode message untuk URL
+        const encodedMessage = encodeURIComponent(message);
+        
+        // Buka WhatsApp
+        window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+    }
+    
+    // Fungsi untuk mendapatkan detail paket format WhatsApp
+    function getWhatsAppPackageDetails(packageName) {
+        const benefits = {
+            'Paket Mikro': [
+                '• Konsultasi awal (1x)',
+                '• Template dokumen halal',
+                '• Panduan upload ke SIHALAL',
+                '• Bantuan input data NIB/PIRT'
+            ],
+            'Paket Mikro+': [
+                '• Semua dari Paket Mikro',
+                '• Pendampingan 1:1 (1 sesi via Zoom)',
+                '• Review dokumen halal',
+                '• Bantuan validasi dan follow-up ke BPJPH'
+            ],
+            'Paket Premium': [
+                '• Konsultasi teknis lengkap',
+                '• Penyusunan SJPH & dokumen pendukung',
+                '• Pendampingan selama audit LPH',
+                '• Koordinasi dengan BPJPH & LPH'
+            ],
+            'Paket Premium+': [
+                '• Semua dari Paket Premium',
+                '• Pelatihan internal SJPH',
+                '• Revisi dokumen sampai tuntas',
+                '• Cetak sertifikat & label halal',
+                '• Laporan akhir profesional (PDF)'
+            ]
+        };
+        
+        return benefits[packageName].join('\n');
+    }
+</script>
+
         <div class="container mx-auto max-w-4xl">
             <!-- Header Section -->
             <section class="text-center mb-12">
@@ -1132,15 +1226,21 @@
                     <div class="result-card bg-gradient-to-r from-primary-600 to-primary-700 dark:from-primary-600 dark:to-primary-500 rounded-xl shadow-md p-8 text-center text-white">
                         <h2 class="text-xl font-bold mb-4">Siap Mendaftar Sertifikasi Halal?</h2>
                         <p class="mb-6">Tim kami siap membantu Anda melalui seluruh proses sertifikasi halal dengan mudah dan cepat.</p>
-                        <a href="index.html#daftar" class="inline-block bg-white hover:bg-gray-100 text-primary-700 font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105">
-                            Konsultasi Sekarang
-                        </a>
+                    
+                         <button onclick="sendWhatsAppMessage()" class="w-full md:w-auto bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg flex items-center justify-center gap-2 transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                            </svg>
+                            Kirim via WhatsApp
+                        </button>
                     </div>
                     
            
                 </div>
             `;
-
+            // <a href="index.html#daftar" class="inline-block bg-white hover:bg-gray-100 text-primary-700 font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105">
+            //                 Konsultasi Sekarang
+            //             </a>
             recommendations += '</div>'; // Close space-y-4 div
             recommendationContent.innerHTML = recommendations;
 
@@ -1185,6 +1285,92 @@
 
         // Initialize progress tracking
         updateProgress();
+
+
+         // Fungsi untuk menampilkan data dari localStorage
+        function displayPackage() {
+            const packageDisplay = document.getElementById('packageDisplay');
+            const savedPackage = localStorage.getItem('selectedPackage');
+            
+            if (savedPackage) {
+                const packageData = JSON.parse(savedPackage);
+                
+                packageDisplay.innerHTML = `
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800 dark:text-white">${packageData.name}</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mt-1">Paket sertifikasi halal untuk kebutuhan usaha Anda</p>
+                        </div>
+                        <span class="bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 px-4 py-2 rounded-full text-lg font-semibold">
+                            Rp${packageData.price.toLocaleString('id-ID')}
+                        </span>
+                    </div>
+                    
+                    <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-600">
+                        <h4 class="font-semibold text-gray-700 dark:text-gray-300 mb-3">Detail Paket:</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            ${getPackageBenefits(packageData.name)}
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-600">
+                        <p class="text-sm text-gray-500 dark:text-gray-400">
+                            <span class="font-medium">Tanggal pemilihan:</span> 
+                            ${new Date().toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+                        </p>
+                    </div>
+                `;
+            }
+        }
+        
+        // Fungsi untuk mendapatkan benefit berdasarkan nama paket
+        function getPackageBenefits(packageName) {
+            const benefits = {
+                'Paket Mikro': [
+                    'Konsultasi awal (1x)',
+                    'Template dokumen halal',
+                    'Panduan upload ke SIHALAL',
+                    'Bantuan input data NIB/PIRT'
+                ],
+                'Paket Mikro+': [
+                    'Semua dari Paket Mikro',
+                    'Pendampingan 1:1 (1 sesi via Zoom)',
+                    'Review dokumen halal',
+                    'Bantuan validasi dan follow-up ke BPJPH'
+                ],
+                'Paket Premium': [
+                    'Konsultasi teknis lengkap',
+                    'Penyusunan SJPH & dokumen pendukung',
+                    'Pendampingan selama audit LPH',
+                    'Koordinasi dengan BPJPH & LPH'
+                ],
+                'Paket Premium+': [
+                    'Semua dari Paket Premium',
+                    'Pelatihan internal SJPH',
+                    'Revisi dokumen sampai tuntas',
+                    'Cetak sertifikat & label halal',
+                    'Laporan akhir profesional (PDF)'
+                ]
+            };
+            
+            return benefits[packageName].map(item => `
+                <div class="flex items-start">
+                    <svg class="h-5 w-5 text-primary-500 mr-2 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span class="text-gray-700 dark:text-gray-300">${item}</span>
+                </div>
+            `).join('');
+        }
+        
+        // Fungsi untuk menghapus paket dari localStorage
+        function clearPackage() {
+            localStorage.removeItem('selectedPackage');
+            displayPackage(); // Refresh tampilan
+        }
+        
+        // Jalankan fungsi saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', displayPackage);
     </script>
 </body>
 

@@ -130,7 +130,7 @@
                         class="bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-6 rounded-lg text-center transition duration-300 transform hover:scale-105">
                         Cek Kesiapan
                     </a>
-                    <a href="https://wa.me/6282138365139"
+                    <a href="" id="pilih_paket"
                         class="border-2 border-primary-600 text-primary-600 font-bold py-3 px-6 rounded-lg text-center transition duration-300 transform hover:scale-105">
                         Konsultasi Sekarang
                     </a>
@@ -388,6 +388,318 @@
         </div>
     </section>
 
+    <!-- Add this modal HTML right before the closing </body> tag -->
+<div id="assessmentModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
+    <div class="bg-white dark:bg-dark-800 rounded-xl p-6 w-full max-w-2xl mx-4 max-h-[90vh] overflow-y-auto">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="text-2xl font-bold text-gray-800 dark:text-white">Klasifikasi Skala Usaha</h3>
+            <button id="closeModal" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        
+        <form id="businessAssessmentForm">
+            <div class="space-y-6">
+                <!-- Question 1 -->
+                <div>
+                    <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">1. Berapa total omzet usaha Anda dalam 1 tahun terakhir?</h4>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="omzet" value="umk" class="mr-2" required>
+                            <span class="text-gray-700 dark:text-gray-300">Di bawah Rp500 juta</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="omzet" value="umk" class="mr-2">
+                            <span class="text-gray-700 dark:text-gray-300">Rp500 juta – Rp5 miliar</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="omzet" value="umb" class="mr-2">
+                            <span class="text-gray-700 dark:text-gray-300">Rp5 miliar – Rp50 miliar</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="omzet" value="umb" class="mr-2">
+                            <span class="text-gray-700 dark:text-gray-300">Di atas Rp50 miliar</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Question 2 -->
+                <div>
+                    <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">2. Berapa total aset usaha Anda (di luar tanah dan bangunan)?</h4>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="aset" value="umk" class="mr-2" required>
+                            <span class="text-gray-700 dark:text-gray-300">Di bawah Rp50 juta</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="aset" value="umk" class="mr-2">
+                            <span class="text-gray-700 dark:text-gray-300">Rp50 juta – Rp500 juta</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="aset" value="umb" class="mr-2">
+                            <span class="text-gray-700 dark:text-gray-300">Rp500 juta – Rp10 miliar</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="aset" value="umb" class="mr-2">
+                            <span class="text-gray-700 dark:text-gray-300">Di atas Rp10 miliar</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Question 3 -->
+                <div>
+                    <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">3. Berapa jumlah karyawan tetap dalam usaha Anda?</h4>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="karyawan" value="umk" class="mr-2" required>
+                            <span class="text-gray-700 dark:text-gray-300">1–4 orang</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="karyawan" value="umk" class="mr-2">
+                            <span class="text-gray-700 dark:text-gray-300">5–19 orang</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="karyawan" value="umb" class="mr-2">
+                            <span class="text-gray-700 dark:text-gray-300">20–99 orang</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="karyawan" value="umb" class="mr-2">
+                            <span class="text-gray-700 dark:text-gray-300">100 orang atau lebih</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Question 4 -->
+                <div>
+                    <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">4. Apa bentuk usaha Anda saat ini?</h4>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="bentuk" value="umk" class="mr-2" required>
+                            <span class="text-gray-700 dark:text-gray-300">Perorangan (tidak berbadan hukum)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="bentuk" value="umk" class="mr-2">
+                            <span class="text-gray-700 dark:text-gray-300">CV (Commanditaire Vennootschap)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="bentuk" value="umb" class="mr-2">
+                            <span class="text-gray-700 dark:text-gray-300">PT (Perseroan Terbatas)</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Question 5 -->
+                <div>
+                    <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">5. Apakah Anda sudah memiliki NIB (Nomor Induk Berusaha)?</h4>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="nib" value="umk" class="mr-2" required>
+                            <span class="text-gray-700 dark:text-gray-300">Ya, dan tercantum sebagai usaha mikro/kecil</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="nib" value="umb" class="mr-2">
+                            <span class="text-gray-700 dark:text-gray-300">Ya, dan tercantum sebagai usaha menengah/besar</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="nib" value="umk" class="mr-2">
+                            <span class="text-gray-700 dark:text-gray-300">Belum memiliki NIB</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="pt-4">
+                    <button type="submit" class="bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                        Lihat Rekomendasi Paket
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Package Selection Modal -->
+<div id="packageModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
+    <div class="bg-white dark:bg-dark-800 rounded-xl p-6 w-full max-w-3xl mx-4 max-h-[90vh] overflow-y-auto">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="text-2xl font-bold text-gray-800 dark:text-white">Rekomendasi Paket Sertifikasi Halal</h3>
+            <button id="closePackageModal" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        
+        <div id="umkPackages" class="hidden">
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Mikro Package -->
+                <div class="border border-green-200 dark:border-green-800 rounded-xl p-6 bg-green-50 dark:bg-green-900/20">
+                    <div class="flex justify-between items-start mb-4">
+                        <h4 class="text-xl font-bold text-green-800 dark:text-green-200">Paket Mikro</h4>
+                        <span class="bg-green-100 dark:bg-green-800 text-green-800 dark:text-green-100 px-3 py-1 rounded-full text-sm font-semibold">Rp350.000</span>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">Skema: Self-Declare (UMK)<br>Cocok untuk: Usaha Mikro (Omzet < Rp500 juta)</p>
+                    <ul class="space-y-2 mb-6 text-gray-700 dark:text-gray-300">
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 text-green-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Konsultasi awal (1x)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 text-green-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Template dokumen halal</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 text-green-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Panduan upload ke SIHALAL</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 text-green-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Bantuan input data NIB/PIRT</span>
+                        </li>
+                    </ul>
+                    <button onclick="selectPackage('Paket Mikro', 350000)" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+                        Pilih Paket Ini
+                    </button>
+                </div>
+                
+                <!-- Mikro+ Package -->
+                <div class="border border-blue-200 dark:border-blue-800 rounded-xl p-6 bg-blue-50 dark:bg-blue-900/20">
+                    <div class="flex justify-between items-start mb-4">
+                        <h4 class="text-xl font-bold text-blue-800 dark:text-blue-200">Paket Mikro+</h4>
+                        <span class="bg-blue-100 dark:bg-blue-800 text-blue-800 dark:text-blue-100 px-3 py-1 rounded-full text-sm font-semibold">Rp500.000</span>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">Skema: Self-Declare (UMK)<br>Cocok untuk: Usaha Mikro & Kecil</p>
+                    <ul class="space-y-2 mb-6 text-gray-700 dark:text-gray-300">
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 text-blue-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Semua dari Paket Mikro</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 text-blue-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Pendampingan 1:1 (1 sesi via Zoom)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 text-blue-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Review dokumen halal</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 text-blue-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Bantuan validasi dan follow-up ke BPJPH</span>
+                        </li>
+                    </ul>
+                    <button onclick="selectPackage('Paket Mikro+', 500000)" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+                        Pilih Paket Ini
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="umbPackages" class="hidden">
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Premium Package -->
+                <div class="border border-purple-200 dark:border-purple-800 rounded-xl p-6 bg-purple-50 dark:bg-purple-900/20">
+                    <div class="flex justify-between items-start mb-4">
+                        <h4 class="text-xl font-bold text-purple-800 dark:text-purple-200">Paket Premium</h4>
+                        <span class="bg-purple-100 dark:bg-purple-800 text-purple-800 dark:text-purple-100 px-3 py-1 rounded-full text-sm font-semibold">Rp3.000.000</span>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">Skema: Reguler (dengan audit LPH)<br>Cocok untuk: Usaha Menengah & Besar</p>
+                    <ul class="space-y-2 mb-6 text-gray-700 dark:text-gray-300">
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 text-purple-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Konsultasi teknis lengkap</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 text-purple-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Penyusunan SJPH & dokumen pendukung</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 text-purple-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Pendampingan selama audit LPH</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 text-purple-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Koordinasi dengan BPJPH & LPH</span>
+                        </li>
+                    </ul>
+                    <button onclick="selectPackage('Paket Premium', 3000000)" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+                        Pilih Paket Ini
+                    </button>
+                </div>
+                
+                <!-- Premium+ Package -->
+                <div class="border border-red-200 dark:border-red-800 rounded-xl p-6 bg-red-50 dark:bg-red-900/20">
+                    <div class="flex justify-between items-start mb-4">
+                        <h4 class="text-xl font-bold text-red-800 dark:text-red-200">Paket Premium+</h4>
+                        <span class="bg-red-100 dark:bg-red-800 text-red-800 dark:text-red-100 px-3 py-1 rounded-full text-sm font-semibold">Rp6.000.000</span>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">Skema: Reguler (All-In)<br>Cocok untuk: Usaha Besar, ekspor ready, atau perusahaan dengan banyak produk</p>
+                    <ul class="space-y-2 mb-6 text-gray-700 dark:text-gray-300">
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 text-red-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Semua dari Paket Premium</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 text-red-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Pelatihan internal SJPH</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 text-red-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Revisi dokumen sampai tuntas</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 text-red-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Cetak sertifikat & label halal</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 text-red-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Laporan akhir profesional (PDF)</span>
+                        </li>
+                    </ul>
+                    <button onclick="selectPackage('Paket Premium+', 6000000)" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+                        Pilih Paket Ini
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
     <!-- CTA Section -->
     <section id="daftar"
@@ -565,6 +877,93 @@
 
     <!-- JavaScript -->
     <script>
+         // Modal functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get the button that opens the modal
+        const assessmentBtn = document.getElementById('pilih_paket');
+        
+        // Get the modal elements
+        const assessmentModal = document.getElementById('assessmentModal');
+        const packageModal = document.getElementById('packageModal');
+        const closeModal = document.getElementById('closeModal');
+        const closePackageModal = document.getElementById('closePackageModal');
+        
+        // When the user clicks the assessment button, show the modal
+        assessmentBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            assessmentModal.classList.remove('hidden');
+        });
+        
+        // When the user clicks on close button, close the modal
+        closeModal.addEventListener('click', function() {
+            assessmentModal.classList.add('hidden');
+        });
+        
+        closePackageModal.addEventListener('click', function() {
+            packageModal.classList.add('hidden');
+        });
+        
+        // When the user clicks anywhere outside of the modal, close it
+        window.addEventListener('click', function(event) {
+            if (event.target === assessmentModal) {
+                assessmentModal.classList.add('hidden');
+            }
+            if (event.target === packageModal) {
+                packageModal.classList.add('hidden');
+            }
+        });
+        
+        // Handle form submission
+        const form = document.getElementById('businessAssessmentForm');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get all selected answers
+            const answers = {
+                omzet: document.querySelector('input[name="omzet"]:checked').value,
+                aset: document.querySelector('input[name="aset"]:checked').value,
+                karyawan: document.querySelector('input[name="karyawan"]:checked').value,
+                bentuk: document.querySelector('input[name="bentuk"]:checked').value,
+                nib: document.querySelector('input[name="nib"]:checked').value
+            };
+            
+            // Count UMK and UMB answers
+            let umkCount = 0;
+            let umbCount = 0;
+            
+            for (const key in answers) {
+                if (answers[key] === 'umk') umkCount++;
+                if (answers[key] === 'umb') umbCount++;
+            }
+            
+            // Determine business size
+            const businessSize = umkCount >= 3 ? 'umk' : 'umb';
+            
+            // Show the appropriate packages
+            assessmentModal.classList.add('hidden');
+            packageModal.classList.remove('hidden');
+            
+            if (businessSize === 'umk') {
+                document.getElementById('umkPackages').classList.remove('hidden');
+                document.getElementById('umbPackages').classList.add('hidden');
+            } else {
+                document.getElementById('umkPackages').classList.add('hidden');
+                document.getElementById('umbPackages').classList.remove('hidden');
+            }
+        });
+    });
+    
+    // Function to handle package selection
+    function selectPackage(packageName, packagePrice) {
+        // Store the selected package in localStorage
+        localStorage.setItem('selectedPackage', JSON.stringify({
+            name: packageName,
+            price: packagePrice
+        }));
+        
+        // Redirect to assessment page
+        window.location.href = 'assesment.html';
+    }
         // Mobile Menu Toggle
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
