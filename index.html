@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ayo Halal - Sertifikasi Halal untuk UMKM</title>
+    <link rel="icon" type="image/png" href="Group1.svg">
+    <link rel="apple-touch-icon" href="Group1.svg">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
@@ -52,6 +55,11 @@
         .dark .icon-adapt {
             color: #4ade80;
         }
+
+        .logo {
+            width: 127px !important;
+            height: 36px !important;
+        }
     </style>
 </head>
 
@@ -61,10 +69,12 @@
         <div class="container mx-auto px-4 py-3">
             <div class="flex justify-between items-center">
                 <div class="flex items-center space-x-2">
-                    <img src="AyoHalal Light.svg" style="width: 127px;height: 36px;" alt="AyoHalal"
-                        class="h-6 w-auto block dark:hidden" />
-                    <img src="AyoHalal Dark.svg" style="width: 127px;height: 36px;" alt="AyoHalal Dark"
-                        class="h-6 w-auto hidden dark:block" />
+                    <a href="index.html">
+                        <img src="AyoHalal Light.svg" alt="AyoHalal" class="h-6 w-auto block dark:hidden logo" />
+                    </a>
+                    <a href="index.html">
+                        <img src="AyoHalal Dark.svg" alt="AyoHalal Dark" class="h-6 w-auto hidden dark:block logo" />
+                    </a>
                 </div>
                 <div class="hidden md:flex space-x-8 items-center">
                     <a href="#home"
@@ -73,8 +83,6 @@
                         class="text-gray-700 dark:text-gray-300 hover:text-primary-500 transition">Pentingnya Halal</a>
                     <a href="#proses" class="text-gray-700 dark:text-gray-300 hover:text-primary-500 transition">Proses
                         Kami</a>
-                    <a href="#paket"
-                        class="text-gray-700 dark:text-gray-300 hover:text-primary-500 transition">Paket</a>
                     <a href="#faq" class="text-gray-700 dark:text-gray-300 hover:text-primary-500 transition">FAQ</a>
                     <a href="#kontak"
                         class="text-gray-700 dark:text-gray-300 hover:text-primary-500 transition">Kontak</a>
@@ -122,13 +130,16 @@
                         class="bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-6 rounded-lg text-center transition duration-300 transform hover:scale-105">
                         Cek Kesiapan
                     </a>
+                    <a href="https://wa.me/6282138365139"
+                        class="border-2 border-primary-600 text-primary-600 font-bold py-3 px-6 rounded-lg text-center transition duration-300 transform hover:scale-105">
+                        Konsultasi Sekarang
+                    </a>
                 </div>
             </div>
             <div class="md:w-1/2">
                 <div class="relative">
                     <div class="relative bg-white dark:bg-dark-800 rounded-xl p-2">
-                        <img src="image_landing.png"
-                            alt="Sertifikasi Halal" class="rounded-lg w-full h-auto">
+                        <img src="image_landing.png" alt="Sertifikasi Halal" class="rounded-lg w-full h-auto">
                     </div>
                 </div>
             </div>
@@ -209,7 +220,7 @@
                                 <span class="text-3xl font-bold">1</span> <!-- Displaying Step 1 -->
                             </div>
                         </div>
-                        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Konsultasi Gratis</h3>
+                        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Konsultasi</h3>
                         <p class="text-gray-600 dark:text-gray-400">Analisis kebutuhan dan kelayakan usaha Anda untuk
                             sertifikasi halal.</p>
                     </div>
@@ -279,7 +290,7 @@
     </section>
 
     <!-- FAQ Section -->
-    <section id="faq" class="py-16 px-4 bg-light-900 dark:bg-dark-800">
+    <section id="faq" class="pt-16 px-4 bg-light-900 dark:bg-dark-800">
         <div class="container mx-auto max-w-4xl">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold mb-4 text-black dark:text-white">Pertanyaan <span
@@ -360,7 +371,7 @@
 
     <!-- Cek kesiapan Section -->
     <section id="home"
-        class="pt-32 pb-20 px-4 bg-gradient-to-b from-light-800 to-light-900 dark:from-dark-800 dark:to-dark-900 min-h-screen flex items-center justify-center">
+        class="pt-18 pb-2 px-4 bg-gradient-to-b from-light-800 to-light-900 dark:from-dark-800 dark:to-dark-900 min-h-screen flex items-center justify-center">
         <div class="text-center max-w-3xl">
             <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4 text-black dark:text-white">
                 Ingin Cek <span class="text-primary-500">Kesiapan Produk</span> Anda untuk Sertifikasi Halal?
@@ -444,7 +455,7 @@
                     </p>
                     <div class="space-y-6">
                         <div class="flex items-start">
-                            <div
+                            <div style="min-width: 42px;"
                                 class="bg-primary-100 text-primary-600 dark:bg-primary-900 w-10 h-10 rounded-full flex items-center justify-center mr-4 mt-1">
                                 <i class="fas fa-phone-alt icon-adapt"></i>
                             </div>
@@ -456,7 +467,7 @@
                             </div>
                         </div>
                         <div class="flex items-start">
-                            <div
+                            <div style="min-width: 42px;"
                                 class="bg-primary-100 text-primary-600 dark:bg-primary-900 w-10 h-10 rounded-full flex items-center justify-center mr-4 mt-1">
                                 <i class="fas fa-envelope icon-adapt"></i>
                             </div>
@@ -467,7 +478,7 @@
                             </div>
                         </div>
                         <div class="flex items-start">
-                            <div
+                            <div style="min-width: 42px;"
                                 class="bg-primary-100 text-primary-600 dark:bg-primary-900 w-10 h-10 rounded-full flex items-center justify-center mr-4 mt-1">
                                 <i class="fas fa-map-marker-alt icon-adapt"></i>
                             </div>
@@ -479,7 +490,7 @@
                             </div>
                         </div>
                         <div class="flex items-start">
-                            <div
+                            <div style="min-width: 42px;"
                                 class="bg-primary-100 text-primary-600 dark:bg-primary-900 w-10 h-10 rounded-full flex items-center justify-center mr-4 mt-1">
                                 <i class="fas fa-clock icon-adapt"></i>
                             </div>
@@ -534,11 +545,9 @@
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="flex items-center space-x-2 mb-4 md:mb-0">
                     <!-- Light mode logo -->
-                    <img src="AyoHalal Light.svg" style="width: 127px;height: 36px;" alt="AyoHalal"
-                        class="h-6 w-auto block dark:hidden" />
+                    <img src="AyoHalal Light.svg" alt="AyoHalal" class="h-6 w-auto block dark:hidden logo" />
                     <!-- Dark mode logo -->
-                    <img src="AyoHalal Dark.svg" style="width: 127px;height: 36px;" alt="AyoHalal Dark"
-                        class="h-6 w-auto hidden dark:block" />
+                    <img src="AyoHalal Dark.svg" alt="AyoHalal Dark" class="h-6 w-auto hidden dark:block logo" />
                 </div>
                 <div class="text-gray-600 dark:text-gray-400 text-sm text-center md:text-right">
                     <p>&copy; 2023 AyoHalal. All rights reserved.</p>
