@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ayo Halal - Sertifikasi Halal untuk UMKM</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/scrollreveal"></script>
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -18,8 +22,8 @@
                             200: '#bbf7d0',
                             300: '#86efac',
                             400: '#4ade80',
-                            500: '#22c55e',
-                            600: '#16a34a',
+                            500: '#296253',
+                            600: '#296253 ',
                             700: '#15803d',
                             800: '#166534',
                             900: '#14532d',
@@ -40,91 +44,107 @@
         }
     </script>
     <style>
-        .timeline-step:not(:last-child):after {
-            content: '';
-            position: absolute;
-            top: 36px;
-            left: 50%;
-            height: 60px;
-            border-left: 2px dashed #4ade80;
+        .icon-adapt {
+            color: #296253;
+            transition: color 0.3s;
         }
-        @media (max-width: 768px) {
-            .timeline-step:not(:last-child):after {
-                left: 24px;
-                top: 40px;
-                height: 40px;
-            }
+
+        .dark .icon-adapt {
+            color: #4ade80;
         }
     </style>
 </head>
-<body class="bg-dark-900 text-gray-200 font-sans">
+
+<body class="bg-white text-gray-800 font-sans dark:bg-dark-900 dark:text-gray-200">
     <!-- Navigation -->
-    <nav class="bg-dark-800 shadow-lg fixed w-full z-10">
+    <nav class="bg-white dark:bg-dark-800 shadow-lg fixed w-full z-10 transition-colors">
         <div class="container mx-auto px-4 py-3">
             <div class="flex justify-between items-center">
                 <div class="flex items-center space-x-2">
                     <i class="fas fa-certificate text-primary-500 text-2xl"></i>
-                    <span class="text-xl font-bold text-white">Ayo<span class="text-primary-500">Halal</span></span>
+                    <span class="text-xl font-bold text-black dark:text-white">
+                        Ayo<span class="text-primary-500">Halal</span>
+                    </span>
                 </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="text-gray-300 hover:text-primary-500 transition">Beranda</a>
-                    <a href="#penting" class="text-gray-300 hover:text-primary-500 transition">Pentingnya Halal</a>
-                    <a href="#proses" class="text-gray-300 hover:text-primary-500 transition">Proses Kami</a>
-                    <a href="#paket" class="text-gray-300 hover:text-primary-500 transition">Paket</a>
-                    <a href="#faq" class="text-gray-300 hover:text-primary-500 transition">FAQ</a>
-                    <a href="#kontak" class="text-gray-300 hover:text-primary-500 transition">Kontak</a>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#home"
+                        class="text-gray-700 dark:text-gray-300 hover:text-primary-500 transition">Beranda</a>
+                    <a href="#penting"
+                        class="text-gray-700 dark:text-gray-300 hover:text-primary-500 transition">Pentingnya Halal</a>
+                    <a href="#proses" class="text-gray-700 dark:text-gray-300 hover:text-primary-500 transition">Proses
+                        Kami</a>
+                    <a href="#paket"
+                        class="text-gray-700 dark:text-gray-300 hover:text-primary-500 transition">Paket</a>
+                    <a href="#faq" class="text-gray-700 dark:text-gray-300 hover:text-primary-500 transition">FAQ</a>
+                    <a href="#kontak"
+                        class="text-gray-700 dark:text-gray-300 hover:text-primary-500 transition">Kontak</a>
+                    <div class="flex items-center space-x-4">
+                        <button id="theme-toggle" class="p-2 rounded-full focus:outline-none">
+                            <i class="fas fa-moon text-gray-500 dark:text-yellow-300" id="theme-icon"></i>
+                        </button>
+                    </div>
                 </div>
                 <div class="md:hidden">
-                    <button id="menu-btn" class="text-gray-300 focus:outline-none">
+                    <button id="menu-btn" class="text-gray-700 dark:text-gray-300 focus:outline-none">
                         <i class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
             </div>
             <!-- Mobile Menu -->
             <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
-                <a href="#home" class="block py-2 text-gray-300 hover:text-primary-500">Beranda</a>
-                <a href="#penting" class="block py-2 text-gray-300 hover:text-primary-500">Pentingnya Halal</a>
-                <a href="#proses" class="block py-2 text-gray-300 hover:text-primary-500">Proses Kami</a>
-                <a href="#paket" class="block py-2 text-gray-300 hover:text-primary-500">Paket</a>
-                <a href="#faq" class="block py-2 text-gray-300 hover:text-primary-500">FAQ</a>
-                <a href="#kontak" class="block py-2 text-gray-300 hover:text-primary-500">Kontak</a>
+                <a href="#home" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-500">Beranda</a>
+                <a href="#penting" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-500">Pentingnya
+                    Halal</a>
+                <a href="#proses" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-500">Proses
+                    Kami</a>
+                <a href="#paket" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-500">Paket</a>
+                <a href="#faq" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-500">FAQ</a>
+                <a href="#kontak" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-500">Kontak</a>
             </div>
         </div>
     </nav>
 
+
     <!-- Hero Section -->
-    <section id="home" class="pt-32 pb-20 px-4 bg-gradient-to-b from-dark-800 to-dark-900">
+    <section id="home"
+        class="pt-32 pb-20 px-4 bg-gradient-to-b from-white to-gray-100 dark:from-dark-800 dark:to-dark-900">
         <div class="container mx-auto flex flex-col md:flex-row items-center">
             <div class="md:w-1/2 mb-10 md:mb-0">
-                <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">
+                <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4 text-gray-800 dark:text-white">
                     Bantu UMKM Anda Dapat <span class="text-primary-500">Sertifikasi Halal</span> dengan Mudah dan Cepat
                 </h1>
-                <p class="text-xl text-gray-400 mb-8">
+                <p class="text-xl text-gray-600 dark:text-gray-400 mb-8">
                     Kami bantu seluruh proses, dari awal sampai sertifikat terbit.
                 </p>
                 <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                    <a href="#daftar" class="bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-6 rounded-lg text-center transition duration-300 transform hover:scale-105">
+                    <a href="#daftar"
+                        class="bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-6 rounded-lg text-center transition duration-300 transform hover:scale-105">
                         Daftar Sekarang
                     </a>
-                    <a href="#konsultasi" class="bg-dark-700 hover:bg-dark-600 border border-primary-500 text-white font-bold py-3 px-6 rounded-lg text-center transition duration-300">
+                    <a href="#konsultasi"
+                        class="bg-gray-200 hover:bg-gray-300 text-gray-800 dark:bg-dark-700 dark:hover:bg-dark-600 dark:text-white border border-primary-500 font-bold py-3 px-6 rounded-lg text-center transition duration-300">
                         Konsultasi Gratis
                     </a>
                 </div>
                 <div class="mt-10 flex items-center space-x-4">
                     <div class="flex -space-x-2">
-                        <img src="https://randomuser.me/api/portraits/women/12.jpg" class="w-10 h-10 rounded-full border-2 border-dark-800" alt="Client">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-10 h-10 rounded-full border-2 border-dark-800" alt="Client">
-                        <img src="https://randomuser.me/api/portraits/women/45.jpg" class="w-10 h-10 rounded-full border-2 border-dark-800" alt="Client">
+                        <img src="https://randomuser.me/api/portraits/women/12.jpg"
+                            class="w-10 h-10 rounded-full border-2 border-white dark:border-dark-800" alt="Client">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg"
+                            class="w-10 h-10 rounded-full border-2 border-white dark:border-dark-800" alt="Client">
+                        <img src="https://randomuser.me/api/portraits/women/45.jpg"
+                            class="w-10 h-10 rounded-full border-2 border-white dark:border-dark-800" alt="Client">
                     </div>
                     <div>
-                        <p class="text-gray-400 text-sm">Lebih dari <span class="font-bold text-primary-500">200+ UMKM</span> telah bergabung</p>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">Lebih dari <span
+                                class="font-bold text-primary-500">200+ UMKM</span> telah bergabung</p>
                         <div class="flex items-center">
                             <i class="fas fa-star text-yellow-400 mr-1"></i>
                             <i class="fas fa-star text-yellow-400 mr-1"></i>
                             <i class="fas fa-star text-yellow-400 mr-1"></i>
                             <i class="fas fa-star text-yellow-400 mr-1"></i>
                             <i class="fas fa-star text-yellow-400 mr-1"></i>
-                            <span class="text-gray-400 ml-1">5.0 (120 reviews)</span>
+                            <span class="text-gray-600 dark:text-gray-400 ml-1">5.0 (120 reviews)</span>
                         </div>
                     </div>
                 </div>
@@ -132,299 +152,152 @@
             <div class="md:w-1/2">
                 <div class="relative">
                     <div class="absolute -top-6 -left-6 w-full h-full border-2 border-primary-500 rounded-xl"></div>
-                    <div class="relative bg-dark-800 rounded-xl p-2 transform rotate-1">
-                        <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Sertifikasi Halal" class="rounded-lg w-full h-auto">
+                    <div class="relative bg-white dark:bg-dark-800 rounded-xl p-2 transform rotate-1">
+                        <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                            alt="Sertifikasi Halal" class="rounded-lg w-full h-auto">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Why Section -->
-    <section id="penting" class="py-16 px-4 bg-dark-800">
+
+    <section id="penting" class="py-16 px-4 transition-colors duration-300 bg-white dark:bg-dark-800">
         <div class="container mx-auto">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold mb-4">Kenapa <span class="text-primary-500">Sertifikasi Halal</span> Penting?</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">Sertifikasi halal bukan hanya kewajiban, tapi juga investasi untuk perkembangan bisnis Anda.</p>
+                <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">
+                    Kenapa <span class="text-primary-500">Sertifikasi Halal</span> Penting?
+                </h2>
+                <p class="max-w-2xl mx-auto text-gray-600 dark:text-gray-400">
+                    Sertifikasi halal bukan hanya kewajiban, tapi juga investasi untuk perkembangan bisnis Anda.
+                </p>
             </div>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-dark-700 p-6 rounded-xl hover:transform hover:scale-105 transition duration-300">
-                    <div class="bg-primary-900 text-primary-500 w-14 h-14 rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-gavel text-2xl"></i>
+                <!-- Box 1 -->
+                <div class="p-6 rounded-xl hover:scale-105 transition duration-300 bg-gray-100 dark:bg-dark-700">
+                    <div
+                        class="w-14 h-14 rounded-full flex items-center justify-center mb-4 bg-primary-100 dark:bg-primary-900">
+                        <i class="fas fa-gavel text-2xl icon-adapt"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">Kewajiban Hukum</h3>
-                    <p class="text-gray-400">Berdasarkan UU No. 33 Tahun 2014 tentang Jaminan Produk Halal, semua produk yang masuk, beredar, dan diperdagangkan di Indonesia wajib bersertifikat halal.</p>
+                    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Kewajiban Hukum</h3>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        Berdasarkan UU No. 33 Tahun 2014 tentang Jaminan Produk Halal, semua produk yang masuk, beredar,
+                        dan diperdagangkan di Indonesia wajib bersertifikat halal.
+                    </p>
                 </div>
-                <div class="bg-dark-700 p-6 rounded-xl hover:transform hover:scale-105 transition duration-300">
-                    <div class="bg-primary-900 text-primary-500 w-14 h-14 rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-hand-holding-heart text-2xl"></i>
+                <!-- Box 2 -->
+                <div class="p-6 rounded-xl hover:scale-105 transition duration-300 bg-gray-100 dark:bg-dark-700">
+                    <div
+                        class="w-14 h-14 rounded-full flex items-center justify-center mb-4 bg-primary-100 dark:bg-primary-900">
+                        <i class="fas fa-hand-holding-heart text-2xl icon-adapt"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">Kepercayaan Konsumen</h3>
-                    <p class="text-gray-400">87% konsumen Muslim Indonesia lebih memilih produk dengan sertifikat halal. Logo halal meningkatkan kepercayaan terhadap produk Anda.</p>
+                    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Kepercayaan Konsumen</h3>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        87% konsumen Muslim Indonesia lebih memilih produk dengan sertifikat halal. Logo halal
+                        meningkatkan kepercayaan terhadap produk Anda.
+                    </p>
                 </div>
-                <div class="bg-dark-700 p-6 rounded-xl hover:transform hover:scale-105 transition duration-300">
-                    <div class="bg-primary-900 text-primary-500 w-14 h-14 rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-store text-2xl"></i>
+                <!-- Box 3 -->
+                <div class="p-6 rounded-xl hover:scale-105 transition duration-300 bg-gray-100 dark:bg-dark-700">
+                    <div
+                        class="w-14 h-14 rounded-full flex items-center justify-center mb-4 bg-primary-100 dark:bg-primary-900">
+                        <i class="fas fa-store text-2xl icon-adapt"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">Akses Pasar Lebih Luas</h3>
-                    <p class="text-gray-400">Produk halal bisa masuk ke retail modern, e-commerce, dan pasar ekspor ke negara-negara Muslim seperti Timur Tengah dan Malaysia.</p>
+                    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Akses Pasar Lebih Luas</h3>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        Produk halal bisa masuk ke retail modern, e-commerce, dan pasar ekspor ke negara-negara Muslim
+                        seperti Timur Tengah dan Malaysia.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
+
     <!-- Process Section -->
-    <section id="proses" class="py-16 px-4 bg-dark-900">
+    <section id="proses" class="py-16 px-4 bg-white dark:bg-dark-900 transition-colors duration-300">
         <div class="container mx-auto">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold mb-4">Bagaimana Kami <span class="text-primary-500">Membantu</span> Anda?</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">Proses pendampingan sertifikasi halal dari awal sampai sertifikat terbit.</p>
+                <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">
+                    Bagaimana Kami <span class="text-primary-500">Membantu</span> Anda?
+                </h2>
+                <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                    Proses pendampingan sertifikasi halal dari awal sampai sertifikat terbit.
+                </p>
             </div>
             <div class="grid md:grid-cols-5 gap-4">
                 <!-- Step 1 -->
                 <div class="timeline-step relative">
-                    <div class="bg-dark-800 p-6 rounded-xl text-center h-full">
-                        <div class="bg-primary-900 text-primary-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <span class="text-2xl font-bold">1</span>
+                    <div class="bg-gray-100 dark:bg-dark-700 p-6 rounded-xl text-center h-full">
+                        <div class="flex items-center justify-center mb-4">
+                            <div
+                                class="bg-primary-500 text-white w-16 h-16 rounded-full flex items-center justify-center">
+                                <span class="text-3xl font-bold">1</span> <!-- Displaying Step 1 -->
+                            </div>
                         </div>
-                        <h3 class="text-xl font-bold mb-2">Konsultasi Gratis</h3>
-                        <p class="text-gray-400">Analisis kebutuhan dan kelayakan usaha Anda untuk sertifikasi halal.</p>
+                        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Konsultasi Gratis</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Analisis kebutuhan dan kelayakan usaha Anda untuk
+                            sertifikasi halal.</p>
                     </div>
                 </div>
+
                 <!-- Step 2 -->
                 <div class="timeline-step relative">
-                    <div class="bg-dark-800 p-6 rounded-xl text-center h-full">
-                        <div class="bg-primary-900 text-primary-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <span class="text-2xl font-bold">2</span>
+                    <div class="bg-gray-100 dark:bg-dark-700 p-6 rounded-xl text-center h-full">
+                        <div class="flex items-center justify-center mb-4">
+                            <div
+                                class="bg-primary-500 text-white w-16 h-16 rounded-full flex items-center justify-center">
+                                <span class="text-3xl font-bold">2</span> <!-- Displaying Step 2 -->
+                            </div>
                         </div>
-                        <h3 class="text-xl font-bold mb-2">Persiapan Dokumen</h3>
-                        <p class="text-gray-400">Kami bantu menyiapkan semua dokumen yang diperlukan untuk pengajuan.</p>
+                        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Persiapan Dokumen</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Kami bantu menyiapkan semua dokumen yang diperlukan
+                            untuk pengajuan.</p>
                     </div>
                 </div>
+
                 <!-- Step 3 -->
                 <div class="timeline-step relative">
-                    <div class="bg-dark-800 p-6 rounded-xl text-center h-full">
-                        <div class="bg-primary-900 text-primary-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <span class="text-2xl font-bold">3</span>
+                    <div class="bg-gray-100 dark:bg-dark-700 p-6 rounded-xl text-center h-full">
+                        <div class="flex items-center justify-center mb-4">
+                            <div
+                                class="bg-primary-500 text-white w-16 h-16 rounded-full flex items-center justify-center">
+                                <span class="text-3xl font-bold">3</span> <!-- Displaying Step 3 -->
+                            </div>
                         </div>
-                        <h3 class="text-xl font-bold mb-2">Pengajuan ke BPJPH</h3>
-                        <p class="text-gray-400">Kami urus pengajuan ke Badan Penyelenggara Jaminan Produk Halal.</p>
+                        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Pengajuan ke BPJPH</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Kami urus pengajuan ke Badan Penyelenggara Jaminan
+                            Produk Halal.</p>
                     </div>
                 </div>
+
                 <!-- Step 4 -->
                 <div class="timeline-step relative">
-                    <div class="bg-dark-800 p-6 rounded-xl text-center h-full">
-                        <div class="bg-primary-900 text-primary-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <span class="text-2xl font-bold">4</span>
+                    <div class="bg-gray-100 dark:bg-dark-700 p-6 rounded-xl text-center h-full">
+                        <div class="flex items-center justify-center mb-4">
+                            <div
+                                class="bg-primary-500 text-white w-16 h-16 rounded-full flex items-center justify-center">
+                                <span class="text-3xl font-bold">4</span> <!-- Displaying Step 4 -->
+                            </div>
                         </div>
-                        <h3 class="text-xl font-bold mb-2">Pendampingan Audit</h3>
-                        <p class="text-gray-400">Kami dampingi saat audit dari Lembaga Pemeriksa Halal (LPH).</p>
+                        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Pendampingan Audit</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Kami dampingi saat audit dari Lembaga Pemeriksa
+                            Halal (LPH).</p>
                     </div>
                 </div>
+
                 <!-- Step 5 -->
                 <div class="timeline-step">
-                    <div class="bg-dark-800 p-6 rounded-xl text-center h-full">
-                        <div class="bg-primary-900 text-primary-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <span class="text-2xl font-bold">5</span>
+                    <div class="bg-gray-100 dark:bg-dark-700 p-6 rounded-xl text-center h-full">
+                        <div class="flex items-center justify-center mb-4">
+                            <div
+                                class="bg-primary-500 text-white w-16 h-16 rounded-full flex items-center justify-center">
+                                <span class="text-3xl font-bold">5</span> <!-- Displaying Step 5 -->
+                            </div>
                         </div>
-                        <h3 class="text-xl font-bold mb-2">Sertifikat Terbit</h3>
-                        <p class="text-gray-400">Sertifikat halal resmi dari BPJPH akan diterbitkan untuk produk Anda.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Package Section -->
-    <section id="paket" class="py-16 px-4 bg-dark-800">
-        <div class="container mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold mb-4">Pilihan <span class="text-primary-500">Paket</span> Layanan</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">Kami menawarkan solusi lengkap untuk kebutuhan sertifikasi halal UMKM Anda.</p>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <!-- Basic Package -->
-                <div class="bg-dark-700 rounded-xl overflow-hidden hover:transform hover:scale-105 transition duration-300">
-                    <div class="bg-dark-600 p-6">
-                        <h3 class="text-xl font-bold mb-1">Paket Basic</h3>
-                        <p class="text-gray-400 mb-4">Untuk UMKM yang sudah siap dokumen</p>
-                        <div class="flex items-end">
-                            <span class="text-3xl font-bold">Rp 2,5</span>
-                            <span class="text-lg text-gray-400 ml-1">jt</span>
-                            <span class="text-gray-400 text-sm ml-2">/produk</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <ul class="space-y-3 mb-6">
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-primary-500 mt-1 mr-2"></i>
-                                <span>Konsultasi awal</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-primary-500 mt-1 mr-2"></i>
-                                <span>Review dokumen</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-primary-500 mt-1 mr-2"></i>
-                                <span>Pengajuan ke BPJPH</span>
-                            </li>
-                            <li class="flex items-start text-gray-500">
-                                <i class="fas fa-times mt-1 mr-2"></i>
-                                <span>Pendampingan audit</span>
-                            </li>
-                            <li class="flex items-start text-gray-500">
-                                <i class="fas fa-times mt-1 mr-2"></i>
-                                <span>Penyusunan dokumen</span>
-                            </li>
-                        </ul>
-                        <a href="#daftar" class="block w-full bg-dark-600 hover:bg-dark-500 text-center text-white font-bold py-3 px-6 rounded-lg transition duration-300">
-                            Pilih Paket
-                        </a>
-                    </div>
-                </div>
-                <!-- Recommended Package -->
-                <div class="bg-dark-700 rounded-xl overflow-hidden border-2 border-primary-500 transform scale-105 hover:scale-110 transition duration-300">
-                    <div class="bg-primary-900 p-3 text-center">
-                        <span class="text-primary-500 font-bold">POPULER</span>
-                    </div>
-                    <div class="bg-dark-600 p-6">
-                        <h3 class="text-xl font-bold mb-1">Paket Lengkap</h3>
-                        <p class="text-gray-400 mb-4">Bantuan dari awal sampai sertifikat terbit</p>
-                        <div class="flex items-end">
-                            <span class="text-3xl font-bold">Rp 5</span>
-                            <span class="text-lg text-gray-400 ml-1">jt</span>
-                            <span class="text-gray-400 text-sm ml-2">/produk</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <ul class="space-y-3 mb-6">
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-primary-500 mt-1 mr-2"></i>
-                                <span>Konsultasi lengkap</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-primary-500 mt-1 mr-2"></i>
-                                <span>Penyusunan dokumen</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-primary-500 mt-1 mr-2"></i>
-                                <span>Pengajuan ke BPJPH</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-primary-500 mt-1 mr-2"></i>
-                                <span>Pendampingan audit</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-primary-500 mt-1 mr-2"></i>
-                                <span>Garansi sampai terbit</span>
-                            </li>
-                        </ul>
-                        <a href="#daftar" class="block w-full bg-primary-600 hover:bg-primary-700 text-center text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105">
-                            Pilih Paket
-                        </a>
-                    </div>
-                </div>
-                <!-- Custom Package -->
-                <div class="bg-dark-700 rounded-xl overflow-hidden hover:transform hover:scale-105 transition duration-300">
-                    <div class="bg-dark-600 p-6">
-                        <h3 class="text-xl font-bold mb-1">Paket Custom</h3>
-                        <p class="text-gray-400 mb-4">Solusi khusus untuk kebutuhan Anda</p>
-                        <div class="flex items-end">
-                            <span class="text-3xl font-bold">Custom</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <ul class="space-y-3 mb-6">
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-primary-500 mt-1 mr-2"></i>
-                                <span>Konsultasi kebutuhan</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-primary-500 mt-1 mr-2"></i>
-                                <span>Solusi fleksibel</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-primary-500 mt-1 mr-2"></i>
-                                <span>Untuk multi-produk</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-primary-500 mt-1 mr-2"></i>
-                                <span>Pendampingan khusus</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-primary-500 mt-1 mr-2"></i>
-                                <span>Harga nego sesuai kebutuhan</span>
-                            </li>
-                        </ul>
-                        <a href="#konsultasi" class="block w-full bg-dark-600 hover:bg-dark-500 text-center text-white font-bold py-3 px-6 rounded-lg transition duration-300">
-                            Konsultasi Gratis
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonial Section -->
-    <section class="py-16 px-4 bg-dark-900">
-        <div class="container mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold mb-4">Apa Kata <span class="text-primary-500">Klien</span> Kami?</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">Pengalaman UMKM yang telah menggunakan layanan kami.</p>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Testimonial 1 -->
-                <div class="bg-dark-800 p-6 rounded-xl">
-                    <div class="flex items-center mb-4">
-                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Testimoni" class="w-12 h-12 rounded-full mr-4">
-                        <div>
-                            <h4 class="font-bold">Ibu Siti</h4>
-                            <p class="text-gray-400 text-sm">Pemilik Siti Cookies</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-300 mb-4">"Prosesnya sangat mudah dengan pendampingan dari tim AyoHalal. Dalam 2 bulan sertifikat sudah keluar dan penjualan meningkat 40%."</p>
-                    <div class="flex">
-                        <i class="fas fa-star text-yellow-400"></i>
-                        <i class="fas fa-star text-yellow-400"></i>
-                        <i class="fas fa-star text-yellow-400"></i>
-                        <i class="fas fa-star text-yellow-400"></i>
-                        <i class="fas fa-star text-yellow-400"></i>
-                    </div>
-                </div>
-                <!-- Testimonial 2 -->
-                <div class="bg-dark-800 p-6 rounded-xl">
-                    <div class="flex items-center mb-4">
-                        <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="Testimoni" class="w-12 h-12 rounded-full mr-4">
-                        <div>
-                            <h4 class="font-bold">Pak Budi</h4>
-                            <p class="text-gray-400 text-sm">Pemilik Budi's Kitchen</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-300 mb-4">"Awalnya bingung dengan dokumen yang diperlukan, tapi tim AyoHalal sangat membantu menyederhanakan prosesnya. Sekarang produk bisa masuk supermarket."</p>
-                    <div class="flex">
-                        <i class="fas fa-star text-yellow-400"></i>
-                        <i class="fas fa-star text-yellow-400"></i>
-                        <i class="fas fa-star text-yellow-400"></i>
-                        <i class="fas fa-star text-yellow-400"></i>
-                        <i class="fas fa-star text-yellow-400"></i>
-                    </div>
-                </div>
-                <!-- Testimonial 3 -->
-                <div class="bg-dark-800 p-6 rounded-xl">
-                    <div class="flex items-center mb-4">
-                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Testimoni" class="w-12 h-12 rounded-full mr-4">
-                        <div>
-                            <h4 class="font-bold">Ibu Rina</h4>
-                            <p class="text-gray-400 text-sm">Pemilik Rina's Jamu</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-300 mb-4">"Dulu usaha rumahan saya tidak bisa ekspor karena tidak ada sertifikat halal. Sekarang sudah bisa kirim ke Malaysia berkat bantuan AyoHalal."</p>
-                    <div class="flex">
-                        <i class="fas fa-star text-yellow-400"></i>
-                        <i class="fas fa-star text-yellow-400"></i>
-                        <i class="fas fa-star text-yellow-400"></i>
-                        <i class="fas fa-star text-yellow-400"></i>
-                        <i class="fas fa-star text-yellow-400"></i>
+                        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Sertifikat Terbit</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Sertifikat halal resmi dari BPJPH akan diterbitkan
+                            untuk produk Anda.</p>
                     </div>
                 </div>
             </div>
@@ -432,61 +305,79 @@
     </section>
 
     <!-- FAQ Section -->
-    <section id="faq" class="py-16 px-4 bg-dark-800">
+    <section id="faq" class="py-16 px-4 bg-light-900 dark:bg-dark-800">
         <div class="container mx-auto max-w-4xl">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold mb-4">Pertanyaan <span class="text-primary-500">Umum</span></h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">Temukan jawaban atas pertanyaan Anda tentang sertifikasi halal.</p>
+                <h2 class="text-3xl font-bold mb-4 text-black dark:text-white">Pertanyaan <span
+                        class="text-primary-500">Umum</span></h2>
+                <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Temukan jawaban atas pertanyaan Anda
+                    tentang sertifikasi halal.</p>
             </div>
             <div class="space-y-4">
                 <!-- FAQ 1 -->
-                <div class="bg-dark-700 rounded-xl overflow-hidden">
+                <div class="bg-light-800 dark:bg-dark-700 rounded-xl overflow-hidden">
                     <button class="faq-btn w-full flex justify-between items-center p-6 text-left">
-                        <h3 class="font-bold text-lg">Apa itu sertifikasi halal?</h3>
+                        <h3 class="font-bold text-lg text-black dark:text-white">Apa itu sertifikasi halal?</h3>
                         <i class="fas fa-chevron-down text-primary-500 transition-transform duration-300"></i>
                     </button>
                     <div class="faq-content px-6 pb-6 hidden">
-                        <p class="text-gray-400">Sertifikasi halal adalah proses pengakuan kehalalan suatu produk yang dikeluarkan oleh Badan Penyelenggara Jaminan Produk Halal (BPJPH). Sertifikat ini menjadi bukti bahwa produk Anda telah memenuhi syarat-syarat halal sesuai ketentuan yang berlaku.</p>
+                        <p class="text-gray-600 dark:text-gray-400">Sertifikasi halal adalah proses pengakuan kehalalan
+                            suatu produk yang dikeluarkan oleh Badan Penyelenggara Jaminan Produk Halal (BPJPH).
+                            Sertifikat ini menjadi bukti bahwa produk Anda telah memenuhi syarat-syarat halal sesuai
+                            ketentuan yang berlaku.</p>
                     </div>
                 </div>
                 <!-- FAQ 2 -->
-                <div class="bg-dark-700 rounded-xl overflow-hidden">
+                <div class="bg-light-800 dark:bg-dark-700 rounded-xl overflow-hidden">
                     <button class="faq-btn w-full flex justify-between items-center p-6 text-left">
-                        <h3 class="font-bold text-lg">Berapa lama proses sertifikasi halal?</h3>
+                        <h3 class="font-bold text-lg text-black dark:text-white">Berapa lama proses sertifikasi halal?
+                        </h3>
                         <i class="fas fa-chevron-down text-primary-500 transition-transform duration-300"></i>
                     </button>
                     <div class="faq-content px-6 pb-6 hidden">
-                        <p class="text-gray-400">Proses sertifikasi halal biasanya memakan waktu 2-4 bulan tergantung kelengkapan dokumen dan kompleksitas produk. Dengan pendampingan kami, proses bisa lebih efisien karena kami memastikan semua dokumen sudah lengkap sebelum diajukan.</p>
+                        <p class="text-gray-600 dark:text-gray-400">Proses sertifikasi halal biasanya memakan waktu 2-4
+                            bulan tergantung kelengkapan dokumen dan kompleksitas produk. Dengan pendampingan kami,
+                            proses bisa lebih efisien karena kami memastikan semua dokumen sudah lengkap sebelum
+                            diajukan.</p>
                     </div>
                 </div>
                 <!-- FAQ 3 -->
-                <div class="bg-dark-700 rounded-xl overflow-hidden">
+                <div class="bg-light-800 dark:bg-dark-700 rounded-xl overflow-hidden">
                     <button class="faq-btn w-full flex justify-between items-center p-6 text-left">
-                        <h3 class="font-bold text-lg">Apakah usaha rumahan bisa dapat sertifikat halal?</h3>
+                        <h3 class="font-bold text-lg text-black dark:text-white">Apakah usaha rumahan bisa dapat
+                            sertifikat halal?</h3>
                         <i class="fas fa-chevron-down text-primary-500 transition-transform duration-300"></i>
                     </button>
                     <div class="faq-content px-6 pb-6 hidden">
-                        <p class="text-gray-400">Ya, usaha rumahan bisa mendapatkan sertifikat halal asalkan memenuhi persyaratan yang ditetapkan. Kami khusus memiliki program pendampingan untuk usaha rumahan dengan biaya lebih terjangkau.</p>
+                        <p class="text-gray-600 dark:text-gray-400">Ya, usaha rumahan bisa mendapatkan sertifikat halal
+                            asalkan memenuhi persyaratan yang ditetapkan. Kami khusus memiliki program pendampingan
+                            untuk usaha rumahan dengan biaya lebih terjangkau.</p>
                     </div>
                 </div>
                 <!-- FAQ 4 -->
-                <div class="bg-dark-700 rounded-xl overflow-hidden">
+                <div class="bg-light-800 dark:bg-dark-700 rounded-xl overflow-hidden">
                     <button class="faq-btn w-full flex justify-between items-center p-6 text-left">
-                        <h3 class="font-bold text-lg">Berapa biaya resmi dari BPJPH?</h3>
+                        <h3 class="font-bold text-lg text-black dark:text-white">Berapa biaya resmi dari BPJPH?</h3>
                         <i class="fas fa-chevron-down text-primary-500 transition-transform duration-300"></i>
                     </button>
                     <div class="faq-content px-6 pb-6 hidden">
-                        <p class="text-gray-400">BPJPH tidak memungut biaya untuk sertifikasi halal bagi UMKM dengan omset di bawah Rp1 miliar per tahun (gratis). Namun tetap ada biaya untuk pemeriksaan laboratorium jika diperlukan. Layanan kami membantu meminimalkan biaya tambahan ini.</p>
+                        <p class="text-gray-600 dark:text-gray-400">BPJPH tidak memungut biaya untuk sertifikasi halal
+                            bagi UMKM dengan omset di bawah Rp1 miliar per tahun (gratis). Namun tetap ada biaya untuk
+                            pemeriksaan laboratorium jika diperlukan. Layanan kami membantu meminimalkan biaya tambahan
+                            ini.</p>
                     </div>
                 </div>
                 <!-- FAQ 5 -->
-                <div class="bg-dark-700 rounded-xl overflow-hidden">
+                <div class="bg-light-800 dark:bg-dark-700 rounded-xl overflow-hidden">
                     <button class="faq-btn w-full flex justify-between items-center p-6 text-left">
-                        <h3 class="font-bold text-lg">Apa saja dokumen yang diperlukan?</h3>
+                        <h3 class="font-bold text-lg text-black dark:text-white">Apa saja dokumen yang diperlukan?</h3>
                         <i class="fas fa-chevron-down text-primary-500 transition-transform duration-300"></i>
                     </button>
                     <div class="faq-content px-6 pb-6 hidden">
-                        <p class="text-gray-400">Dokumen utama yang diperlukan antara lain: fotokopi KTP, NPWP, izin usaha (jika ada), daftar produk, daftar bahan baku, diagram alir proses produksi, dan sertifikat pelatihan halal untuk penanggung jawab produk. Kami akan memberikan checklist lengkap setelah konsultasi.</p>
+                        <p class="text-gray-600 dark:text-gray-400">Dokumen utama yang diperlukan antara lain: fotokopi
+                            KTP, NPWP, izin usaha (jika ada), daftar produk, daftar bahan baku, diagram alir proses
+                            produksi, dan sertifikat pelatihan halal untuk penanggung jawab produk. Kami akan memberikan
+                            checklist lengkap setelah konsultasi.</p>
                     </div>
                 </div>
             </div>
@@ -494,40 +385,51 @@
     </section>
 
     <!-- Cek kesiapan Section -->
-    <section id="home" class="pt-32 pb-20 px-4 bg-gradient-to-b from-dark-800 to-dark-900 min-h-screen flex items-center justify-center">
+    <section id="home"
+        class="pt-32 pb-20 px-4 bg-gradient-to-b from-light-800 to-light-900 dark:from-dark-800 dark:to-dark-900 min-h-screen flex items-center justify-center">
         <div class="text-center max-w-3xl">
-          <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">
-            Ingin Cek <span class="text-primary-500">Kesiapan Produk</span> Anda untuk Sertifikasi Halal?
-          </h1>
-          <p class="text-xl text-gray-400 mb-8">
-            Kami bantu mengevaluasi apakah produk UMKM Anda sudah siap untuk proses sertifikasi halal.
-          </p>
-          <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-            <a href="assesment.html" class="bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-6 rounded-lg text-center transition duration-300 transform hover:scale-105">
-             Cek Sekarang
-            </a>
-          </div>
+            <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4 text-black dark:text-white">
+                Ingin Cek <span class="text-primary-500">Kesiapan Produk</span> Anda untuk Sertifikasi Halal?
+            </h1>
+            <p class="text-xl text-gray-600 mb-8 dark:text-gray-300">
+                Kami bantu mengevaluasi apakah produk UMKM Anda sudah siap untuk proses sertifikasi halal.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="assesment.html"
+                    class="bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-6 rounded-lg text-center transition duration-300 transform hover:scale-105">
+                    Cek Sekarang
+                </a>
+            </div>
         </div>
-      </section>
+    </section>
+
 
     <!-- CTA Section -->
-    <section id="daftar" class="py-16 px-4 bg-gradient-to-r from-primary-800 to-primary-700">
+    <section id="daftar"
+        class="py-16 px-4 bg-gradient-to-r from-primary-800 to-primary-700 dark:from-primary-600 dark:to-primary-500">
         <div class="container mx-auto max-w-4xl text-center">
-            <h2 class="text-3xl font-bold mb-6">Siap Mengurus Sertifikat Halal untuk Produk Anda?</h2>
-            <p class="text-gray-100 mb-8">Isi formulir berikut dan kami akan menghubungi Anda dalam 1x24 jam.</p>
-            <form class="bg-dark-800 rounded-xl p-8 shadow-lg">
+            <h2 class="text-3xl font-bold mb-6 text-white dark:text-white">
+                Siap Mengurus Sertifikat Halal untuk Produk Anda?
+            </h2>
+            <p class="text-gray-100 mb-8 dark:text-gray-300">
+                Isi formulir berikut dan kami akan menghubungi Anda dalam 1x24 jam.
+            </p>
+            <form class="bg-light-800 dark:bg-dark-800 rounded-xl p-8 shadow-lg">
                 <div class="grid md:grid-cols-2 gap-6 mb-6">
                     <div>
                         <label for="nama" class="block text-gray-300 text-left mb-2">Nama Lengkap</label>
-                        <input type="text" id="nama" class="w-full bg-dark-700 border border-dark-600 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-primary-500">
+                        <input type="text" id="nama"
+                            class="w-full bg-light-700 dark:bg-dark-700 border border-light-600 dark:border-dark-600 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-primary-500">
                     </div>
                     <div>
                         <label for="wa" class="block text-gray-300 text-left mb-2">Nomor WhatsApp</label>
-                        <input type="tel" id="wa" class="w-full bg-dark-700 border border-dark-600 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-primary-500">
+                        <input type="tel" id="wa"
+                            class="w-full bg-light-700 dark:bg-dark-700 border border-light-600 dark:border-dark-600 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-primary-500">
                     </div>
                     <div>
                         <label for="usaha" class="block text-gray-300 text-left mb-2">Jenis Usaha</label>
-                        <select id="usaha" class="w-full bg-dark-700 border border-dark-600 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-primary-500">
+                        <select id="usaha"
+                            class="w-full bg-light-700 dark:bg-dark-700 border border-light-600 dark:border-dark-600 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-primary-500">
                             <option value="">Pilih Jenis Usaha</option>
                             <option value="makanan">Makanan</option>
                             <option value="minuman">Minuman</option>
@@ -538,7 +440,8 @@
                     </div>
                     <div>
                         <label for="paket" class="block text-gray-300 text-left mb-2">Paket yang Diminati</label>
-                        <select id="paket" class="w-full bg-dark-700 border border-dark-600 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-primary-500">
+                        <select id="paket"
+                            class="w-full bg-light-700 dark:bg-dark-700 border border-light-600 dark:border-dark-600 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-primary-500">
                             <option value="">Pilih Paket</option>
                             <option value="basic">Paket Basic</option>
                             <option value="lengkap">Paket Lengkap</option>
@@ -549,9 +452,11 @@
                 </div>
                 <div class="mb-6">
                     <label for="pesan" class="block text-gray-300 text-left mb-2">Pertanyaan atau Pesan</label>
-                    <textarea id="pesan" rows="3" class="w-full bg-dark-700 border border-dark-600 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-primary-500"></textarea>
+                    <textarea id="pesan" rows="3"
+                        class="w-full bg-light-700 dark:bg-dark-700 border border-light-600 dark:border-dark-600 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-primary-500"></textarea>
                 </div>
-                <button type="submit" class="w-full md:w-auto bg-white hover:bg-gray-100 text-primary-700 font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105">
+                <button type="submit"
+                    class="w-full md:w-auto bg-white hover:bg-gray-100 text-primary-700 font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105">
                     Kirim Permohonan
                 </button>
             </form>
@@ -564,37 +469,45 @@
             <div class="grid md:grid-cols-2 gap-12">
                 <div>
                     <h2 class="text-3xl font-bold mb-6">Hubungi <span class="text-primary-500">Kami</span></h2>
-                    <p class="text-gray-400 mb-8">Kami siap membantu Anda mendapatkan sertifikat halal dengan mudah dan cepat.</p>
+                    <p class="text-gray-400 mb-8">Kami siap membantu Anda mendapatkan sertifikat halal dengan mudah dan
+                        cepat.</p>
                     <div class="space-y-6">
                         <div class="flex items-start">
-                            <div class="bg-primary-900 text-primary-500 w-10 h-10 rounded-full flex items-center justify-center mr-4 mt-1">
+                            <div
+                                class="bg-primary-900 text-primary-500 w-10 h-10 rounded-full flex items-center justify-center mr-4 mt-1">
                                 <i class="fas fa-phone-alt"></i>
                             </div>
                             <div>
                                 <h4 class="font-bold">Telepon/WhatsApp</h4>
-                                <a href="https://wa.me/6282138365139" class="text-gray-400 hover:text-primary-500 transition">+62 821-3836-5139</a>
+                                <a href="https://wa.me/6282138365139"
+                                    class="text-gray-400 hover:text-primary-500 transition">+62 821-3836-5139</a>
                             </div>
                         </div>
                         <div class="flex items-start">
-                            <div class="bg-primary-900 text-primary-500 w-10 h-10 rounded-full flex items-center justify-center mr-4 mt-1">
+                            <div
+                                class="bg-primary-900 text-primary-500 w-10 h-10 rounded-full flex items-center justify-center mr-4 mt-1">
                                 <i class="fas fa-envelope"></i>
                             </div>
                             <div>
                                 <h4 class="font-bold">Email</h4>
-                                <a href="mailto:info@ayohalal.com" class="text-gray-400 hover:text-primary-500 transition">info@ayohalal.com</a>
+                                <a href="mailto:info@ayohalal.com"
+                                    class="text-gray-400 hover:text-primary-500 transition">info@ayohalal.com</a>
                             </div>
                         </div>
                         <div class="flex items-start">
-                            <div class="bg-primary-900 text-primary-500 w-10 h-10 rounded-full flex items-center justify-center mr-4 mt-1">
+                            <div
+                                class="bg-primary-900 text-primary-500 w-10 h-10 rounded-full flex items-center justify-center mr-4 mt-1">
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
                             <div>
                                 <h4 class="font-bold">Alamat Kantor</h4>
-                                <p class="text-gray-400">Jl. Sertifikasi Halal No. 123, Gedung Halal Center Lt. 5, Jakarta Selatan 12540</p>
+                                <p class="text-gray-400">Jl. Sertifikasi Halal No. 123, Gedung Halal Center Lt. 5,
+                                    Jakarta Selatan 12540</p>
                             </div>
                         </div>
                         <div class="flex items-start">
-                            <div class="bg-primary-900 text-primary-500 w-10 h-10 rounded-full flex items-center justify-center mr-4 mt-1">
+                            <div
+                                class="bg-primary-900 text-primary-500 w-10 h-10 rounded-full flex items-center justify-center mr-4 mt-1">
                                 <i class="fas fa-clock"></i>
                             </div>
                             <div>
@@ -606,16 +519,20 @@
                     <div class="mt-8">
                         <h4 class="font-bold mb-4">Ikuti Kami</h4>
                         <div class="flex space-x-4">
-                            <a href="#" class="bg-dark-800 hover:bg-dark-700 w-10 h-10 rounded-full flex items-center justify-center transition">
+                            <a href="#"
+                                class="bg-dark-800 hover:bg-dark-700 w-10 h-10 rounded-full flex items-center justify-center transition">
                                 <i class="fab fa-instagram text-xl"></i>
                             </a>
-                            <a href="#" class="bg-dark-800 hover:bg-dark-700 w-10 h-10 rounded-full flex items-center justify-center transition">
+                            <a href="#"
+                                class="bg-dark-800 hover:bg-dark-700 w-10 h-10 rounded-full flex items-center justify-center transition">
                                 <i class="fab fa-facebook-f text-xl"></i>
                             </a>
-                            <a href="#" class="bg-dark-800 hover:bg-dark-700 w-10 h-10 rounded-full flex items-center justify-center transition">
+                            <a href="#"
+                                class="bg-dark-800 hover:bg-dark-700 w-10 h-10 rounded-full flex items-center justify-center transition">
                                 <i class="fab fa-youtube text-xl"></i>
                             </a>
-                            <a href="#" class="bg-dark-800 hover:bg-dark-700 w-10 h-10 rounded-full flex items-center justify-center transition">
+                            <a href="#"
+                                class="bg-dark-800 hover:bg-dark-700 w-10 h-10 rounded-full flex items-center justify-center transition">
                                 <i class="fab fa-linkedin-in text-xl"></i>
                             </a>
                         </div>
@@ -625,7 +542,10 @@
                     <div class="bg-dark-800 rounded-xl p-6 h-full">
                         <h3 class="text-xl font-bold mb-6">Lokasi Kantor Kami</h3>
                         <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.8195613507864!3d-6.194741395493371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5390917b759%3A0x9cb5e5ef99b5a3f1!2sHalal%20Center%20Indonesia!5e0!3m2!1sen!2sid!4v1621234567890!5m2!1sen!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" class="min-h-[300px]"></iframe>
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.8195613507864!3d-6.194741395493371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5390917b759%3A0x9cb5e5ef99b5a3f1!2sHalal%20Center%20Indonesia!5e0!3m2!1sen!2sid!4v1621234567890!5m2!1sen!2sid"
+                                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                                class="min-h-[300px]"></iframe>
                         </div>
                     </div>
                 </div>
@@ -650,7 +570,8 @@
     </footer>
 
     <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/6282138365139" target="_blank" class="fixed bottom-6 right-6 bg-green-600 hover:bg-green-700 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition transform hover:scale-110">
+    <a href="https://wa.me/6282138365139" target="_blank"
+        class="fixed bottom-6 right-6 bg-green-600 hover:bg-green-700 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition transform hover:scale-110">
         <i class="fab fa-whatsapp text-2xl"></i>
     </a>
 
@@ -659,29 +580,29 @@
         // Mobile Menu Toggle
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        
+
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
 
         // FAQ Accordion
         const faqBtns = document.querySelectorAll('.faq-btn');
-        
+
         faqBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 const content = btn.nextElementSibling;
                 const icon = btn.querySelector('i');
-                
+
                 // Toggle content
                 content.classList.toggle('hidden');
-                
+
                 // Rotate icon
                 if (content.classList.contains('hidden')) {
                     icon.style.transform = 'rotate(0deg)';
                 } else {
                     icon.style.transform = 'rotate(180deg)';
                 }
-                
+
                 // Close other open FAQs
                 faqBtns.forEach(otherBtn => {
                     if (otherBtn !== btn) {
@@ -694,19 +615,19 @@
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                
+
                 const targetId = this.getAttribute('href');
                 if (targetId === '#') return;
-                
+
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     window.scrollTo({
                         top: targetElement.offsetTop - 80,
                         behavior: 'smooth'
                     });
-                    
+
                     // Close mobile menu if open
                     mobileMenu.classList.add('hidden');
                 }
@@ -725,6 +646,40 @@
         sr.reveal('.hero-content, .section-title, .feature-card, .timeline-step, .package-card, .testimonial-card, .faq-item, .contact-info, .map-container', {
             interval: 200
         });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            const html = document.documentElement;
+
+            // Load preference
+            if (localStorage.getItem('theme') === 'dark' ||
+                (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                html.classList.add('dark');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            } else {
+                html.classList.remove('dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+
+            themeToggle.addEventListener('click', () => {
+                html.classList.toggle('dark');
+                const isDark = html.classList.contains('dark');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+
+                // Toggle icon
+                if (isDark) {
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                } else {
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                }
+            });
+        });
     </script>
 </body>
+
 </html>
