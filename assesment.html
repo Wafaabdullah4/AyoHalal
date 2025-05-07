@@ -179,11 +179,9 @@
         <div class="container mx-auto px-4 py-3">
             <div class="flex justify-between items-center">
                 <div class="flex items-center space-x-2">
-                    <!-- Ganti ikon dengan logo SVG -->
-                    <img src="Group 1.svg" alt="Logo" class="h-8 w-auto" />
-    
-                    <!-- Ganti tulisan AyoHalal dengan gambar teks SVG -->
-                    <img src="ayohalal.svg" alt="AyoHalal" class="h-6 w-auto" />
+                <img src="AyoHalal Light.svg" alt="AyoHalal" class="h-6 w-auto block dark:hidden" />
+                <img src="AyoHalal Dark.svg" alt="AyoHalal Dark" class="h-6 w-auto hidden dark:block" />
+
                 </div>
                 <div class="flex items-center space-x-4">
                     <button id="theme-toggle" class="p-2 rounded-full focus:outline-none">
@@ -223,7 +221,7 @@
             <!-- Progress Bar -->
             <div class="mb-8">
                 <div class="flex justify-between mb-2">
-                    <span class="text-sm font-medium">Progress</span>
+                    <span class="text-sm font-medium">Progress Pengisian Data</span>
                     <span class="text-sm font-medium" id="progress-text">0%</span>
                 </div>
                 <div class="w-full bg-gray-200 dark:bg-dark-700 rounded-full h-2.5">
@@ -242,7 +240,7 @@
                         <p class="font-medium mb-4">1. Sejauh mana usaha Anda sudah memiliki legalitas seperti NIB, P-IRT/BPOM/MD?</p>
                         <div class="grid grid-cols-5 gap-4">
                             <label class="radio-container">
-                                <input type="radio" name="q1" value="1" class="radio-input" required>
+                                <input type="radio" name="q1" value="1" class="radio-input" >
                                 <span class="radio-design"></span>
                                 <span class="radio-label">1</span>
                             </label>
@@ -274,7 +272,7 @@
                         <p class="font-medium mb-4">2. Sejauh mana Anda memahami pentingnya sertifikasi halal bagi usaha Anda?</p>
                         <div class="grid grid-cols-5 gap-4">
                             <label class="radio-container">
-                                <input type="radio" name="q2" value="1" class="radio-input" required>
+                                <input type="radio" name="q2" value="1" class="radio-input" >
                                 <span class="radio-design"></span>
                                 <span class="radio-label">1</span>
                             </label>
@@ -311,7 +309,7 @@
                         <p class="font-medium mb-4">3. Sejauh mana Anda mengetahui dan memastikan kehalalan bahan baku yang digunakan?</p>
                         <div class="grid grid-cols-5 gap-4">
                             <label class="radio-container">
-                                <input type="radio" name="q3" value="1" class="radio-input" required>
+                                <input type="radio" name="q3" value="1" class="radio-input" >
                                 <span class="radio-design"></span>
                                 <span class="radio-label">1</span>
                             </label>
@@ -343,7 +341,7 @@
                         <p class="font-medium mb-4">4. Sejauh mana Anda menyimpan dan mencatat asal-usul bahan baku dari supplier?</p>
                         <div class="grid grid-cols-5 gap-4">
                             <label class="radio-container">
-                                <input type="radio" name="q4" value="1" class="radio-input" required>
+                                <input type="radio" name="q4" value="1" class="radio-input" >
                                 <span class="radio-design"></span>
                                 <span class="radio-label">1</span>
                             </label>
@@ -380,7 +378,7 @@
                         <p class="font-medium mb-4">5. Sejauh mana Anda menerapkan pemisahan antara bahan/proses halal dan non-halal (jika relevan)?</p>
                         <div class="grid grid-cols-5 gap-4">
                             <label class="radio-container">
-                                <input type="radio" name="q5" value="1" class="radio-input" required>
+                                <input type="radio" name="q5" value="1" class="radio-input" >
                                 <span class="radio-design"></span>
                                 <span class="radio-label">1</span>
                             </label>
@@ -412,7 +410,7 @@
                         <p class="font-medium mb-4">6. Sejauh mana alur produksi Anda sudah memiliki dokumentasi atau SOP tertulis?</p>
                         <div class="grid grid-cols-5 gap-4">
                             <label class="radio-container">
-                                <input type="radio" name="q6" value="1" class="radio-input" required>
+                                <input type="radio" name="q6" value="1" class="radio-input" >
                                 <span class="radio-design"></span>
                                 <span class="radio-label">1</span>
                             </label>
@@ -449,7 +447,7 @@
                         <p class="font-medium mb-4">7. Sejauh mana Anda dan tim memahami prinsip dasar kehalalan produk?</p>
                         <div class="grid grid-cols-5 gap-4">
                             <label class="radio-container">
-                                <input type="radio" name="q7" value="1" class="radio-input" required>
+                                <input type="radio" name="q7" value="1" class="radio-input" >
                                 <span class="radio-design"></span>
                                 <span class="radio-label">1</span>
                             </label>
@@ -481,7 +479,7 @@
                         <p class="font-medium mb-4">8. Sejauh mana Anda memiliki staf khusus atau penanggung jawab aspek halal dalam produksi?</p>
                         <div class="grid grid-cols-5 gap-4">
                             <label class="radio-container">
-                                <input type="radio" name="q8" value="1" class="radio-input" required>
+                                <input type="radio" name="q8" value="1" class="radio-input" >
                                 <span class="radio-design"></span>
                                 <span class="radio-label">1</span>
                             </label>
@@ -518,7 +516,7 @@
                         <p class="font-medium mb-4">9. Sejauh mana Anda mencatat proses produksi harian (bahan masuk, hasil jadi, dll)?</p>
                         <div class="grid grid-cols-5 gap-4">
                             <label class="radio-container">
-                                <input type="radio" name="q9" value="1" class="radio-input" required>
+                                <input type="radio" name="q9" value="1" class="radio-input" >
                                 <span class="radio-design"></span>
                                 <span class="radio-label">1</span>
                             </label>
@@ -550,7 +548,7 @@
                         <p class="font-medium mb-4">10. Sejauh mana Anda siap mengikuti audit halal oleh auditor dari LPH?</p>
                         <div class="grid grid-cols-5 gap-4">
                             <label class="radio-container">
-                                <input type="radio" name="q10" value="1" class="radio-input" required>
+                                <input type="radio" name="q10" value="1" class="radio-input" >
                                 <span class="radio-design"></span>
                                 <span class="radio-label">1</span>
                             </label>
@@ -729,20 +727,22 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-white dark:bg-dark-800 py-8 px-4 border-t border-gray-200 dark:border-dark-700">
+    <footer class="bg-white dark:bg-[#1a1a1a] py-8 px-4 border-t border-gray-200 dark:border-[#2a2a2a]">
         <div class="container mx-auto">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="flex items-center space-x-2 mb-4 md:mb-0">
-                    <i class="fas fa-certificate text-primary-500 text-2xl"></i>
-                    <span class="text-xl font-bold dark:text-white">Ayo<span class="text-primary-500">Halal</span></span>
+                    <!-- Logo Gambar (Light & Dark Mode) -->
+                    <img src="AyoHalal Light.svg" alt="AyoHalal" class="h-6 w-auto block dark:hidden" />
+                    <img src="AyoHalal Dark.svg" alt="AyoHalal Dark" class="h-6 w-auto hidden dark:block" />
                 </div>
                 <div class="text-gray-600 dark:text-gray-400 text-sm text-center md:text-right">
-                    <p>&copy; 2024 AyoHalal. All rights reserved.</p>
+                    <p>&copy; 2025 AyoHalal. All rights reserved.</p>
                     <p class="mt-1">PT. Ayo Halal Indonesia - NPWP: 12.345.678.9-012.345</p>
                 </div>
             </div>
         </div>
     </footer>
+    
 
     <!-- WhatsApp Float Button -->
     <a href="https://wa.me/6281234567890" class="fixed bottom-6 right-6 bg-green-600 hover:bg-green-700 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition transform hover:scale-110">
@@ -750,6 +750,9 @@
     </a>
 
     <!-- JavaScript -->
+     <!-- SweetAlert2 CSS & JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script>
         // Dark/Light Mode Toggle
         const themeToggle = document.getElementById('theme-toggle');
@@ -796,7 +799,8 @@
         
         function updateProgress() {
             const answered = Array.from(questions).filter(q => q.checked).length;
-            const total = questions.length;
+            const totalRadio = questions.length;
+            const total = totalRadio / 5;
             const progress = Math.round((answered / total) * 100);
             
             progressBar.style.width = `${progress}%`;
@@ -821,6 +825,29 @@
         }
         
         // Form Submission
+        // form.addEventListener('submit', function(e) {
+        //     e.preventDefault();
+            
+        //     // Check if all questions are answered
+        //     const allAnswered = Array.from(questions).every(q => {
+        //         const name = q.getAttribute('name');
+        //         return document.querySelector(`input[name="${name}"]:checked`);
+        //     });
+            
+        //     if (!allAnswered) {
+        //         console.log("ini belum diisi kalo masuk kesini")
+        //         alert('Silakan jawab semua pertanyaan sebelum melihat hasil.');
+        //         return;
+        //     }
+            
+        //     // Show loading animation
+        //     form.classList.add('hidden');
+        //     document.getElementById('loading-section').classList.remove('hidden');
+            
+        //     // Simulate processing delay
+        //     setTimeout(showResults, 2000);
+        // });
+
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -831,7 +858,20 @@
             });
             
             if (!allAnswered) {
-                alert('Silakan jawab semua pertanyaan sebelum melihat hasil.');
+                Swal.fire({
+                icon: 'warning',
+                title: 'Belum Lengkap',
+                text: 'Silakan jawab semua pertanyaan sebelum melihat hasil.',
+                iconColor: '#FBBF24', // warna kuning halus (Tailwind warning)
+                confirmButtonText: 'Lanjutkan Mengisi',
+                confirmButtonColor: '#296253', // hijau elegan kamu
+                background: window.matchMedia('(prefers-color-scheme: dark)').matches ? '#1f2937' : '#ffffff',
+                color: window.matchMedia('(prefers-color-scheme: dark)').matches ? '#f3f4f6' : '#111827',
+                padding: '1.5rem',
+                customClass: {
+                    popup: 'rounded-xl shadow-md'
+                }
+                });
                 return;
             }
             
@@ -842,6 +882,7 @@
             // Simulate processing delay
             setTimeout(showResults, 2000);
         });
+
         
         function showResults() {
             // Hide loading, show results
