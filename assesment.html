@@ -862,16 +862,16 @@
                 icon: 'warning',
                 title: 'Belum Lengkap',
                 text: 'Silakan jawab semua pertanyaan sebelum melihat hasil.',
-                iconColor: '#FBBF24', // warna kuning halus (Tailwind warning)
+                iconColor: '#FBBF24',
                 confirmButtonText: 'Lanjutkan Mengisi',
-                confirmButtonColor: '#296253', // hijau elegan kamu
-                background: window.matchMedia('(prefers-color-scheme: dark)').matches ? '#1f2937' : '#ffffff',
-                color: window.matchMedia('(prefers-color-scheme: dark)').matches ? '#f3f4f6' : '#111827',
+                confirmButtonColor: '#296253',
+                background: document.documentElement.classList.contains('dark') ? '#1f2937' : '#ffffff',
+                color: document.documentElement.classList.contains('dark') ? '#f3f4f6' : '#111827',
                 padding: '1.5rem',
                 customClass: {
                     popup: 'rounded-xl shadow-md'
                 }
-                });
+            });
                 return;
             }
             
