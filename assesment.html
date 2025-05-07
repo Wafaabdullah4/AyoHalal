@@ -159,6 +159,7 @@
         /* Result card animation */
         .result-card {
             animation: fadeInUp 0.8s ease-out;
+            position: relative;
         }
 
         @keyframes fadeInUp {
@@ -221,33 +222,39 @@
     <!-- Main Content -->
     <main class="pt-24 pb-12 px-4">
         <!-- Tampilan untuk menampilkan data dari localStorage -->
-<section class="py-12 px-4 bg-gray-50 dark:bg-dark-800">
-    <div class="container mx-auto max-w-4xl">
-        <div class="bg-white dark:bg-dark-700 rounded-xl shadow-md p-6 md:p-8">
-            <h2 class="text-2xl md:text-3xl font-bold text-gray-800 dark:text-white mb-6">Paket yang Anda Pilih</h2>
-            
-            <div id="packageDisplay" class="border border-gray-200 dark:border-gray-600 rounded-lg p-6">
-                <div class="text-center py-8">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-gray-400 dark:text-gray-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                    </svg>
-                    <p class="text-gray-500 dark:text-gray-400">Tidak ada data paket yang tersimpan</p>
+        <section class="py-12 px-4 bg-gray-50 dark:bg-dark-800">
+            <div class="container mx-auto max-w-4xl">
+                <div class="bg-white dark:bg-dark-700 rounded-xl shadow-md p-6 md:p-8">
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-800 dark:text-white mb-6">Paket yang Anda Pilih
+                    </h2>
+
+                    <div id="packageDisplay" class="border border-gray-200 dark:border-gray-600 rounded-lg p-6">
+                        <div class="text-center py-8">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="h-12 w-12 mx-auto text-gray-400 dark:text-gray-500 mb-4" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                            </svg>
+                            <p class="text-gray-500 dark:text-gray-400">Tidak ada data paket yang tersimpan</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 flex flex-col sm:flex-row justify-end gap-4">
+                        <button onclick="clearPackage()"
+                            class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 transition">
+                            Hapus Paket
+                        </button>
+                        <a href="index.html"
+                            class="px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg text-center transition">
+                            Kembali ke Beranda
+                        </a>
+                    </div>
                 </div>
             </div>
-            
-            <div class="mt-6 flex flex-col sm:flex-row justify-end gap-4">
-                <button onclick="clearPackage()" class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 transition">
-                    Hapus Paket
-                </button>
-                <a href="index.html" class="px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg text-center transition">
-                    Kembali ke Beranda
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Tambahkan ini di bagian bawah tampilan package display yang sebelumnya -->
-<!-- <div class="mt-8">
+        </section>
+        <!-- Tambahkan ini di bagian bawah tampilan package display yang sebelumnya -->
+        <!-- <div class="mt-8">
     <button onclick="sendWhatsAppMessage()" class="w-full md:w-auto bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg flex items-center justify-center gap-2 transition">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
@@ -256,63 +263,80 @@
     </button>
 </div> -->
 
-<script>
-    // Fungsi untuk mengirim data ke WhatsApp
-    function sendWhatsAppMessage() {
-        const savedPackage = localStorage.getItem('selectedPackage');
-        
-        if (!savedPackage) {
-            alert('Tidak ada paket yang dipilih');
-            return;
-        }
-        
-        const packageData = JSON.parse(savedPackage);
-        const phoneNumber = '+6285778445682'; // Nomor tujuan
-        // const phoneNumber = '+6282138365139'; // Nomor tujuan
-        
-        // Format pesan WhatsApp
-        const message = `Halo, saya tertarik dengan *${packageData.name}* (Rp${packageData.price.toLocaleString('id-ID')}) untuk sertifikasi halal.\n\nBerikut detail paket yang saya pilih:\n${getWhatsAppPackageDetails(packageData.name)}\n\nSaya ingin memulai proses ini. Bagaimana caranya?`;
-        
-        // Encode message untuk URL
-        const encodedMessage = encodeURIComponent(message);
-        
-        // Buka WhatsApp
-        window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
-    }
-    
-    // Fungsi untuk mendapatkan detail paket format WhatsApp
-    function getWhatsAppPackageDetails(packageName) {
-        const benefits = {
-            'Paket Mikro': [
-                '• Konsultasi awal (1x)',
-                '• Template dokumen halal',
-                '• Panduan upload ke SIHALAL',
-                '• Bantuan input data NIB/PIRT'
-            ],
-            'Paket Mikro+': [
-                '• Semua dari Paket Mikro',
-                '• Pendampingan 1:1 (1 sesi via Zoom)',
-                '• Review dokumen halal',
-                '• Bantuan validasi dan follow-up ke BPJPH'
-            ],
-            'Paket Premium': [
-                '• Konsultasi teknis lengkap',
-                '• Penyusunan SJPH & dokumen pendukung',
-                '• Pendampingan selama audit LPH',
-                '• Koordinasi dengan BPJPH & LPH'
-            ],
-            'Paket Premium+': [
-                '• Semua dari Paket Premium',
-                '• Pelatihan internal SJPH',
-                '• Revisi dokumen sampai tuntas',
-                '• Cetak sertifikat & label halal',
-                '• Laporan akhir profesional (PDF)'
-            ]
-        };
-        
-        return benefits[packageName].join('\n');
-    }
-</script>
+        <script>
+            // Fungsi untuk mengirim data ke WhatsApp
+            function sendWhatsAppMessage() {
+                const savedPackage = localStorage.getItem('selectedPackage');
+
+                const packageData = JSON.parse(savedPackage);
+                const phoneNumber = '+6285795177202'; // Nomor tujuan
+                // const phoneNumber = '+6285778445682'; // Nomor tujuan
+                // const phoneNumber = '+6282138365139'; // Nomor tujuan
+
+                let message;
+                if (packageData) {
+                    // Format pesan WhatsApp untuk paket
+                    message = `Halo, saya tertarik dengan *${packageData.name}* (Rp${packageData.price.toLocaleString('id-ID')}) untuk sertifikasi halal.\n\nBerikut detail paket yang saya pilih:\n${getWhatsAppPackageDetails(packageData.name)}\n\nSaya ingin memulai proses ini. Bagaimana caranya?`;
+                } else {
+                    // Ambil data assessment dari localStorage jika tidak ada paket
+                    const assessmentResult = JSON.parse(localStorage.getItem('assessment_result'));
+                    if (assessmentResult) {
+                        const totalPercentage = assessmentResult.total_percentage;
+                        
+                        // Format pesan WhatsApp untuk hasil assessment
+                        message = "Halo, saya baru saja mengisi assessment kesiapan sertifikasi halal.\n\n*Hasil Assessment:*\nSkor Total: " + totalPercentage + "%\n\n*Detail Skor Per Kategori:*";
+                        
+                        // Tambahkan skor tiap section
+                        assessmentResult.scores.forEach(section => {
+                            message += "\n- " + section.title + ": " + section.score + "/10";
+                        });
+                        
+                        message += "\n\nSaya ingin konsultasi lebih lanjut tentang sertifikasi halal.";
+                    } else {
+                        message = "Halo, saya tertarik dengan layanan konsultasi sertifikasi halal. Mohon informasi lebih lanjut.";
+                    }
+                }
+
+                // Encode message untuk URL
+                const encodedMessage = encodeURIComponent(message);
+
+                // Buka WhatsApp
+                window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+            }
+
+            // Fungsi untuk mendapatkan detail paket format WhatsApp
+            function getWhatsAppPackageDetails(packageName) {
+                const benefits = {
+                    'Paket Mikro': [
+                        '• Konsultasi awal (1x)',
+                        '• Template dokumen halal',
+                        '• Panduan upload ke SIHALAL',
+                        '• Bantuan input data NIB/PIRT'
+                    ],
+                    'Paket Mikro+': [
+                        '• Semua dari Paket Mikro',
+                        '• Pendampingan 1:1 (1 sesi via Zoom)',
+                        '• Review dokumen halal',
+                        '• Bantuan validasi dan follow-up ke BPJPH'
+                    ],
+                    'Paket Premium': [
+                        '• Konsultasi teknis lengkap',
+                        '• Penyusunan SJPH & dokumen pendukung',
+                        '• Pendampingan selama audit LPH',
+                        '• Koordinasi dengan BPJPH & LPH'
+                    ],
+                    'Paket Premium+': [
+                        '• Semua dari Paket Premium',
+                        '• Pelatihan internal SJPH',
+                        '• Revisi dokumen sampai tuntas',
+                        '• Cetak sertifikat & label halal',
+                        '• Laporan akhir profesional (PDF)'
+                    ]
+                };
+
+                return benefits[packageName].join('\n');
+            }
+        </script>
 
         <div class="container mx-auto max-w-4xl">
             <!-- Header Section -->
@@ -322,11 +346,12 @@
                 <p class="text-lg text-gray-600 dark:text-gray-400 mb-6">Kami bantu mengevaluasi apakah produk UMKM Anda
                     sudah siap untuk proses sertifikasi halal.</p>
                 <div
-                    class="mx-auto bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 text-left max-w-2xl">
+                    class="mx-auto bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 text-left max-w-3xl">
                     <h3 class="font-bold text-blue-800 dark:text-blue-300 mb-2 flex items-center">
                         <i class="fas fa-info-circle mr-2"></i> Panduan Pengisian
                     </h3>
-                    <p class="text-blue-700 dark:text-blue-300 text-sm mb-5">Pilih jawaban yang paling sesuai dengan kondisi
+                    <p class="text-blue-700 dark:text-blue-300 text-sm mb-5">Pilih jawaban yang paling sesuai dengan
+                        kondisi
                         usaha Anda saat ini menggunakan skala berikut:</p>
                     <div class="flex flex-col sm:flex-row gap-2 text-xs">
                         <div class="bg-blue-100 dark:bg-blue-800/50 p-2 rounded">1: Belum sama sekali</div>
@@ -731,6 +756,25 @@
             <!-- Result Section (Hidden by default) -->
             <div id="result-section" class="hidden">
                 <div class="result-card bg-white dark:bg-dark-800 rounded-xl shadow-md p-8 mb-8">
+                    <!-- Recommendation Result Floating Refresh Button -->
+                    <div class="absolute top-4 right-4">
+                        <button id="refresh-results" class="bg-primary-600 hover:bg-primary-700 text-white p-3 rounded-full shadow-lg transition transform hover:scale-110 focus:outline-none" title="Refresh hasil">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Add this script to the end of the JavaScript section -->
+                    <script>
+                        // Add event listener for the refresh button
+                        document.getElementById('refresh-results').addEventListener('click', function() {
+                            // Clear assessment result from localStorage
+                            localStorage.removeItem('assessment_result');
+                            // Reload the page to start fresh
+                            location.reload();
+                        });
+                    </script>
                     <div class="text-center mb-8">
                         <h2 class="text-2xl font-bold mb-2">Hasil Kesiapan Sertifikasi Halal</h2>
                         <p class="text-gray-600 dark:text-gray-400">Berdasarkan jawaban Anda, berikut tingkat kesiapan
@@ -1011,6 +1055,41 @@
                 return;
             }
 
+            // Save assessment results to localStorage
+            const formData = {};
+            for (let i = 1; i <= 10; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+                formData[questionName] = selectedOption ? parseInt(selectedOption.value) : 0;
+            }
+
+            // Define section names
+            const sectionNames = {
+                a: "Legalitas Usaha",
+                b: "Bahan Baku & Supplier",
+                c: "Proses Produksi",
+                d: "SDM & Pemahaman Halal",
+                e: "Dokumentasi"
+            };
+
+            // Calculate section scores for localStorage
+            const assessmentResult = {
+                scores: [
+                    { key: "a", title: sectionNames.a, score: calculateSectionScore(['q1', 'q2']) },
+                    { key: "b", title: sectionNames.b, score: calculateSectionScore(['q3', 'q4']) },
+                    { key: "c", title: sectionNames.c, score: calculateSectionScore(['q5', 'q6']) },
+                    { key: "d", title: sectionNames.d, score: calculateSectionScore(['q7', 'q8']) },
+                    { key: "e", title: sectionNames.e, score: calculateSectionScore(['q9', 'q10']) },
+                ],
+                answers: formData,
+                date: new Date().toISOString(),
+                totalScore: Object.values(formData).reduce((sum, value) => sum + value, 0),
+                total_percentage: Math.round((Object.values(formData).reduce((sum, value) => sum + value, 0) / 50) * 100),
+            };
+
+            // Store the assessment result in localStorage
+            localStorage.setItem("assessment_result", JSON.stringify(assessmentResult));
+
             // Show loading animation
             form.classList.add('hidden');
             document.getElementById('loading-section').classList.remove('hidden');
@@ -1019,20 +1098,52 @@
             setTimeout(showResults, 2000);
         });
 
+        const assessmentResult = JSON.parse(localStorage.getItem("assessment_result"))
+
+        if (assessmentResult) {
+            form.classList.add('hidden');
+            // Get assessment result from localStorage
+            if (assessmentResult && assessmentResult.total_percentage) {
+                // Update progress bar using the stored percentage
+                const progress = assessmentResult.total_percentage;
+                
+                progressBar.style.width = `100%`;
+                progressText.textContent = `100%`;
+            } else {
+                // Default progress if no stored data
+                progressBar.style.width = `0%`;
+                progressText.textContent = `0%`;
+            }
+            showResults()
+        }
 
         function showResults() {
             // Hide loading, show results
             document.getElementById('loading-section').classList.add('hidden');
             document.getElementById('result-section').classList.remove('hidden');
 
-            // Calculate scores
-            const scores = {
-                a: calculateSectionScore(['q1', 'q2']),
-                b: calculateSectionScore(['q3', 'q4']),
-                c: calculateSectionScore(['q5', 'q6']),
-                d: calculateSectionScore(['q7', 'q8']),
-                e: calculateSectionScore(['q9', 'q10'])
-            };
+            let scores;
+
+            const assessmentResult = localStorage.getItem("assessment_result")
+            if (assessmentResult) {
+                // Calculate scores
+                // Parse the assessment result from localStorage
+                const parsedResult = JSON.parse(assessmentResult);
+                scores = {};
+
+                // Extract scores from the saved result
+                parsedResult.scores.forEach(item => {
+                    scores[item.key] = item.score;
+                });
+            }else {
+                scores = {
+                    a: calculateSectionScore(['q1', 'q2']),
+                    b: calculateSectionScore(['q3', 'q4']),
+                    c: calculateSectionScore(['q5', 'q6']),
+                    d: calculateSectionScore(['q7', 'q8']),
+                    e: calculateSectionScore(['q9', 'q10'])
+                };
+            }
 
             const totalScore = Object.values(scores).reduce((a, b) => a + b, 0);
             const percentage = Math.round((totalScore / 50) * 100);
@@ -1284,17 +1395,17 @@
         }
 
         // Initialize progress tracking
-        updateProgress();
+        // updateProgress();
 
 
-         // Fungsi untuk menampilkan data dari localStorage
+        // Fungsi untuk menampilkan data dari localStorage
         function displayPackage() {
             const packageDisplay = document.getElementById('packageDisplay');
             const savedPackage = localStorage.getItem('selectedPackage');
-            
+
             if (savedPackage) {
                 const packageData = JSON.parse(savedPackage);
-                
+
                 packageDisplay.innerHTML = `
                     <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                         <div>
@@ -1322,7 +1433,7 @@
                 `;
             }
         }
-        
+
         // Fungsi untuk mendapatkan benefit berdasarkan nama paket
         function getPackageBenefits(packageName) {
             const benefits = {
@@ -1352,7 +1463,7 @@
                     'Laporan akhir profesional (PDF)'
                 ]
             };
-            
+
             return benefits[packageName].map(item => `
                 <div class="flex items-start">
                     <svg class="h-5 w-5 text-primary-500 mr-2 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1362,13 +1473,18 @@
                 </div>
             `).join('');
         }
-        
+
         // Fungsi untuk menghapus paket dari localStorage
         function clearPackage() {
+            const hasPackage = localStorage.getItem("selectedPackage")
             localStorage.removeItem('selectedPackage');
+
             displayPackage(); // Refresh tampilan
+            if (hasPackage) {
+                document.location.href = "assesment.html"
+            }
         }
-        
+
         // Jalankan fungsi saat halaman dimuat
         document.addEventListener('DOMContentLoaded', displayPackage);
     </script>
